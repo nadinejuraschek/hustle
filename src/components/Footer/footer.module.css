@@ -1,8 +1,8 @@
 .footer {
-  box-shadow: 0px -1px 0px rgba(0, 0, 0, 0.1);
+  border-top: 1px solid var(--grey_medium);
   font-size: 1.2rem;
 
-  height: 5rem;
+  height: 4.9rem;
   width: 100vw;
 
   display: flex;

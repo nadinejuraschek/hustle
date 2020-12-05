@@ -1,9 +1,9 @@
-const BrowsePlans = () => {
+const Dashboard = () => {
   return (
-    <div>
-      BrowsePlan
-    </div>
+    <main className='main'>
+      
+    </main>
   );
 };
 
-export default BrowsePlans;
+export default Dashboard;

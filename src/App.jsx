@@ -6,25 +6,32 @@ import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 import Layout from 'components/Layout';
 
 // PAGES
+import Create from 'pages/Create';
 import Dashboard from 'pages/Dashboard';
+import Playground from 'pages/Playground';
 
 const App = () => {
   return (
     <Suspense fallback={<div>Loading...</div>}>
       <Router>
-        <Layout>
-          <Switch>
-            <Route exact path='/'>
+        <Switch>
+          <Route exact path='/'>
+            <Layout>
               <Dashboard />
-            </Route>
-            <Route exact path='/plans/create'>
+            </Layout>
+          </Route>
+          <Route exact path='/create'>
+            <Layout>
+              <Create />
+            </Layout>
+          </Route>
+          {/* <Route exact path='/'>
               
-            </Route>
-            <Route exact path='/plans/:id'>
-              
-            </Route>
-          </Switch>
-        </Layout>
+          </Route> */}
+          <Route exact path='/playground'>
+            <Playground />
+          </Route>
+        </Switch>
       </Router>
     </Suspense>
   );

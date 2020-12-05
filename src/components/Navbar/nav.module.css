@@ -1,7 +1,8 @@
 .container {
-  box-shadow: 0px 1px 0px rgba(0, 0, 0, 0.1);
+  background-color: var(--white);
+  border-bottom: 1px solid var(--grey_medium);
 
-  height: 7rem;
+  height: 6.9rem;
   width: 100vw;
 
   display: flex;
@@ -22,52 +23,95 @@
 }
 
 .logo {
-  height: 3.5rem;
-  width: 3.5rem;
-}
-
-.links {
-  display: none;
-  align-items: center;
-  gap: 2rem;
-}
-
-.links a {
-  color: currentColor;
-  text-decoration: none !important;
-}
-
-.links a:hover {
-  cursor: pointer;
+  font-size: 2.5rem;
+  font-weight: bold;
 }
 
 .active {
   font-weight: bold;
 }
 
-.menuBtn {
-  height: 3.5rem;
-  width: 3.5rem;
+/* MENU */
+.menu {
+  width: 4.5rem;
 }
 
+.burgerLines,
+.burgerLines:before,
+.burgerLines:after {
+  background-color: var(--blue_dark);
+  border-radius: 0.25rem;
+  content: '';
+  height: 0.25rem;
+  transform: rotate(0);
+  transition: top 0.2s 0.2s, left 0.1s, transform 0.2s,
+    background-color 0.4s 0.2s;
+}
+
+.burgerLines {
+  width: 100%;
+}
+
+.burgerLines:before {
+  position: absolute;
+  bottom: 1rem;
+  left: 0;
+
+  width: 50%;
+}
+
+.burgerLines:after {
+  position: absolute;
+  top: 1rem;
+  left: 0;
+
+  width: 70%;
+}
+
+.burgerLines:hover {
+  cursor: pointer;
+}
+
+.open .burgerLines {
+  background-color: transparent;
+  transition: background-color 0.2s, top 0.2s, left 0.2s, transform 0.2s 0.15s;
+}
+
+.open .burgerLines:before,
+.open .burgerLines:after {
+  transition: 0.2s background-color, 0.2s top, 0.2s left, 0.2s transform 0.15s;
+  left: 0.5em;
+  top: 0px;
+}
+
+.open .burgerLines:before {
+  transform: rotate(-45deg);
+}
+
+.open .burgerLines:after {
+  transform: rotate(45deg);
+}
+
+/* SIDENAV DRAWER */
 .sidenav {
   display: flex;
   flex-direction: column;
 
+  background-color: var(--grey_light);
   padding: 7rem 0 5rem;
 
   height: 100vh;
-  width: 17rem;
+  width: 25rem;
 }
 
 .sidenav a:first-child {
-  border-top: 1px solid rgba(0, 0, 0, 0.1);
+  border-top: 1px solid var(--grey_medium);
 }
 
 .sidenav a {
-  border-bottom: 1px solid rgba(0, 0, 0, 0.1);
-  color: currentColor;
-  font-size: 1.6rem;
+  border-bottom: 1px solid var(--grey_medium);
+  color: var(--blue_dark);
+  font-size: 1.8rem;
   padding: 0 2.4rem;
   text-decoration: none;
 
@@ -75,7 +119,6 @@
   align-items: center;
 
   height: 6rem;
-  width: 100%;
 }
 
 @media only screen and (min-width: 768px) {

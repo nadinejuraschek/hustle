@@ -1,0 +1,13 @@
+{
+  "NAV": {
+    "DASHBOARD": "Dashboard",
+    "ADD": "Einkommen hinzufügen"
+  },
+  "FORM": {
+    "JOB": "Nebentätigkeit",
+    "SOURCE": "Einnahmequelle",
+    "AMOUNT": "Betrag",
+    "LIMIT": "---",
+    "REMAINDER": "---"
+  }
+}

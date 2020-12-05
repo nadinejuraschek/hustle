@@ -5,9 +5,6 @@ import { useState } from 'react';
 import { NavLink } from 'react-router-dom';
 import Drawer from '@material-ui/core/Drawer';
 
-// ICONS
-import MenuRoundedIcon from '@material-ui/icons/MenuRounded';
-
 // STYLES
 import styles from './nav.module.css';
 
@@ -17,19 +14,25 @@ const Navbar = () => {
   return (
     <div className={styles.container}>
       <nav className={styles.nav}>
-        <div className={styles.logo} />
-        <div className={styles.links}>
-          <NavLink exact to='/' activeClassName={styles.active}>Dashboard</NavLink>
-          <NavLink to='/create' activeClassName={styles.active}>Playground</NavLink>
+        {/* <AccountBalanceWalletRoundedIcon className={styles.logo} /> */}
+        <div className={styles.logo}>hustle</div>
+        <div className={`${styles.menu} ${openNav ? styles.open : ""}`} onClick={() => setOpenNav(true)}>
+          <div className={styles.burgerLines}></div>
         </div>
-        <MenuRoundedIcon className={styles.menuBtn} onClick={() => setOpenNav(true)} />
         <Drawer
           open={openNav}
           onClose={() => setOpenNav(false)}
         >
           <div className={styles.sidenav}>
-            <NavLink exact to='/' activeClassName={styles.active}>Dashboard</NavLink>
-            <NavLink to='/create' activeClassName={styles.active}>Playground</NavLink>
+            <NavLink exact to='/' activeClassName={styles.active}>
+              Dashboard
+            </NavLink>
+            <NavLink exact to='/create' activeClassName={styles.active}>
+              Add Income Source
+            </NavLink>
+            <NavLink to='/playground' activeClassName={styles.active}>
+              Playground
+            </NavLink>
           </div>
         </Drawer>
       </nav>

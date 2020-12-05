@@ -1,4 +1,4 @@
-const CreatePlan = () => {
+const Playground = () => {
   return (
     <div>
       
@@ -6,4 +6,4 @@ const CreatePlan = () => {
   );
 };
 
-export default CreatePlan;
+export default Playground;

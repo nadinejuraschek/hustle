@@ -1,5 +1,5 @@
 /* FONTS */
-@import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@400;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;700&display=swap');
 
 /* MEYER'S RESET */
 /* http://meyerweb.com/eric/tools/css/reset/
@@ -53,10 +53,27 @@ table {
 /* CUSTOM RESET AND VARIABLES */
 :root {
 	color: #222222;
-  font-family: 'Quicksand', 'Helvetica Neue', 'Helvetica', 'Arial', sans-serif;
-  font-size: 10px;
+  font-family: 'Roboto', 'Helvetica Neue', 'Helvetica', 'Arial', sans-serif;
+	font-size: 10px;
+
+	--blue_lightest: #D9DFF1;
+	--blue_light: #A4AAC4;
+	--blue_medium: #3546AB;
+	--blue_dark: #0C135B;
+	--grey_light: #F8F9FE;
+	--grey_medium: #c7c7c7;
+	--grey_dark: #222222;
+	--orange_light: #FDE7E0;
+	--orange_medium: #FD9579;
+	--orange_gradient: linear-gradient(to bottom, #FF8562, #F0582E);
+	--white: #ffffff;
 }
 
-main {
+.view {
+	background-color: var(--grey_light);
 	height: calc(100vh - 12rem);
+}
+
+.main {
+	padding: 2.4rem;
 }
