@@ -4,10 +4,30 @@
     "ADD": "Einkommen hinzufügen"
   },
   "FORM": {
-    "JOB": "Nebentätigkeit",
-    "SOURCE": "Einnahmequelle",
-    "AMOUNT": "Betrag",
-    "LIMIT": "---",
+    "JOB": {
+      "LABEL": "Nebentätigkeit",
+      "ERROR": ""
+    },
+    "SOURCE": {
+      "LABEL": "Einnahmequelle",
+      "ERROR": ""
+    },
+    "AMOUNT": {
+      "LABEL": "Betrag",
+      "ERROR": ""
+    },
+    "LIMIT": {
+      "LABEL": "---",
+      "ERROR": ""
+    },
+    "COLOR": {
+      "LABEL": "Farbe",
+      "ERROR": "---"
+    },
+    "SUBMIT": "Hinzufügen"
+  },
+  "BOARD": {
+    "TOTAL": "Total",
     "REMAINDER": "---"
   }
 }

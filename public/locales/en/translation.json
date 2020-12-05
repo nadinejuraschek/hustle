@@ -4,10 +4,27 @@
     "ADD": "Add Income"
   },
   "FORM": {
-    "JOB": "Nebentätigkeit",
-    "SOURCE": "Einnahmequelle",
-    "AMOUNT": "Betrag",
-    "LIMIT": "---",
+    "JOB": {
+      "LABEL": "Job Activity",
+      "ERROR": "Please choose an activity."
+    },
+    "SOURCE": {
+      "LABEL": "Source",
+      "ERROR": "Please choose the source."
+    },
+    "AMOUNT": {
+      "LABEL": "Amount",
+      "ERROR": "Please enter an amount."
+    },
+    "COLOR": {
+      "LABEL": "Color",
+      "ERROR": "Please pick a color."
+    },
+    "SUBMIT": "Submit"
+  },
+  "BOARD": {
+    "TOTAL": "Total",
+    "LIMIT": "Limit",
     "REMAINDER": "---"
   }
 }

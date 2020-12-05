@@ -3,3 +3,20 @@
   flex-direction: column;
   gap: 2rem;
 }
+
+.twoFields {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.btn {
+  background-color: var(--blue_medium) !important;
+  color: var(--white) !important;
+  font-size: 1.6rem !important;
+  font-weight: bold !important;
+  text-transform: none !important;
+
+  height: 4rem;
+  width: 14rem;
+}

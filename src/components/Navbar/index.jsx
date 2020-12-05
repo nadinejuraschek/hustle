@@ -1,6 +1,9 @@
 // REACT
 import { useState } from 'react';
 
+// TRANSLATION
+import { useTranslation } from 'react-i18next';
+
 // COMPONENTS
 import { NavLink } from 'react-router-dom';
 import Drawer from '@material-ui/core/Drawer';
@@ -9,6 +12,7 @@ import Drawer from '@material-ui/core/Drawer';
 import styles from './nav.module.css';
 
 const Navbar = () => {
+  const { t } = useTranslation();
   const [ openNav, setOpenNav ] = useState(false);
 
   return (
@@ -25,10 +29,10 @@ const Navbar = () => {
         >
           <div className={styles.sidenav}>
             <NavLink exact to='/' activeClassName={styles.active}>
-              Dashboard
+              {t('NAV.DASHBOARD')}
             </NavLink>
             <NavLink exact to='/create' activeClassName={styles.active}>
-              Add Income Source
+              {t('NAV.ADD')}
             </NavLink>
             <NavLink to='/playground' activeClassName={styles.active}>
               Playground

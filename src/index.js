@@ -8,6 +8,9 @@ import './index.css';
 // COMPONENTS
 import App from './App';
 
+// TRANSLATION
+import './i18n';
+
 ReactDOM.render(
   <React.StrictMode>
     <App />
