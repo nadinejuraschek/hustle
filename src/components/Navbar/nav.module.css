@@ -1,0 +1,89 @@
+.container {
+  box-shadow: 0px 1px 0px rgba(0, 0, 0, 0.1);
+
+  height: 7rem;
+  width: 100vw;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.nav {
+  font-size: 1.6rem;
+  padding: 2.4rem;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  width: 100%;
+  max-width: 120rem;
+}
+
+.logo {
+  height: 3.5rem;
+  width: 3.5rem;
+}
+
+.links {
+  display: none;
+  align-items: center;
+  gap: 2rem;
+}
+
+.links a {
+  color: currentColor;
+  text-decoration: none !important;
+}
+
+.links a:hover {
+  cursor: pointer;
+}
+
+.active {
+  font-weight: bold;
+}
+
+.menuBtn {
+  height: 3.5rem;
+  width: 3.5rem;
+}
+
+.sidenav {
+  display: flex;
+  flex-direction: column;
+
+  padding: 7rem 0 5rem;
+
+  height: 100vh;
+  width: 17rem;
+}
+
+.sidenav a:first-child {
+  border-top: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+.sidenav a {
+  border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+  color: currentColor;
+  font-size: 1.6rem;
+  padding: 0 2.4rem;
+  text-decoration: none;
+
+  display: flex;
+  align-items: center;
+
+  height: 6rem;
+  width: 100%;
+}
+
+@media only screen and (min-width: 768px) {
+  .menuBtn {
+    display: none;
+  }
+
+  .links {
+    display: flex;
+  }
+}
