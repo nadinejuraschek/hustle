@@ -1,0 +1,31 @@
+.container {
+  background-color: var(--white);
+  border-radius: 4px;
+  box-shadow: 0px 3px 1px -2px rgba(0,0,0,0.2), 0px 2px 2px 0px rgba(0,0,0,0.14), 0px 1px 5px 0px rgba(0,0,0,0.12);
+
+  width: 100%;
+}
+
+.tabs {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, calc(100% / 2));
+  grid-template-rows: auto;
+
+  width: 100%;
+}
+
+.tab {
+  border-bottom: 1px solid var(--grey_medium);
+  font-size: 1.6rem;
+  height: 5rem;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.active {
+  border-bottom: 2px solid var(--blue_medium);
+  color: var(--blue_medium);
+  font-weight: bold;
+}

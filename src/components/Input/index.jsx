@@ -18,7 +18,7 @@ const Input = ({ currency, error, formRef, label, name, options, placeholder, se
         { currency && <span className={styles.currency}>€</span>}
         </>
       }
-      { error && <div className={styles.error}>{error}</div> }
+      { error && <div className={styles.error}>{error.message}</div> }
     </div>
   );
 };

@@ -63,14 +63,14 @@ const Form = () => {
       onSubmit={() => handleSubmit(formSubmit)}
     >
       <Input
-        error={errors.job.message}
+        error={errors.job}
         label={t('FORM.JOB.LABEL')}
         name="job"
         selecter
         formRef={register}
       />
       <Input
-        error={errors.source.message}
+        error={errors.source}
         label={t('FORM.SOURCE.LABEL')}
         name="source"
         formRef={register}
@@ -78,12 +78,18 @@ const Form = () => {
       <div className={styles.twoFields}>
         <Input
           currency
-          error={errors.amount.message}
+          error={errors.amount}
           label={t('FORM.AMOUNT.LABEL')}
           name="amount"
           formRef={register}
         />
-        <ColorPicker defaultValue="#FF8562" hideTextfield formRef={register} />
+        <div className={styles.color}>
+          <ColorPicker
+            defaultValue="#FF8562"
+            hideTextfield
+            formRef={register}
+          />
+        </div>
       </div>
         <Button
           label={t('FORM.SUBMIT')}
