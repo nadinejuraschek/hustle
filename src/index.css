@@ -60,12 +60,14 @@ table {
 	--blue_light: #A4AAC4;
 	--blue_medium: #3546AB;
 	--blue_dark: #0C135B;
+	--green: #35ab70;
 	--grey_light: #F8F9FE;
 	--grey_medium: #c7c7c7;
 	--grey_dark: #222222;
 	--orange_light: #FDE7E0;
 	--orange_medium: #FD9579;
 	--orange_gradient: linear-gradient(to bottom, #FF8562, #F0582E);
+	--red: #d13f3f;
 	--white: #ffffff;
 }
 

@@ -2,31 +2,25 @@
 import { useContext, useState } from 'react';
 
 // DEPENDENCIES
-import AddCircleOutlineRoundedIcon from '@material-ui/icons/AddCircleOutlineRounded';
-import SaveRoundedIcon from '@material-ui/icons/SaveRounded';
+
+// COMPONENTS
+import { Plus } from 'components/Icon';
+import { Save } from 'components/Icon';
+import Graph from 'components/Graph';
+import List from 'components/List';
 
 // STYLES
 import styles from './details.module.css';
 
 // CONTEXT
 import { JobContext } from 'context/JobContext';
+import { IncomeProvider } from 'context/IncomeContext';
 
 const Details = () => {
   const { jobs, setJobs } = useContext(JobContext);
-  const [ inputValue, setInputValue ] = useState({
-    label: '', value: '',
-  });
+  const [ inputValue, setInputValue ] = useState('');
   const [ dropdown, setDropdown ] = useState(false);
   const [ jobForm, setJobForm ] = useState(false);
-
-  const tabs = [
-    { label: 'Babysitting', value: 'babysitting' },
-    { label: 'Etsy', value: 'etsy' },
-    { label: 'Kleiderverkauf', value: 'kleiderverkauf' },
-    { label: 'Tutoring', value: 'tutoring' },
-    { label: 'Investitionen', value: 'investitionen' },
-    { label: 'Proofreading', value: 'proofreading' },
-  ];
 
   console.log(jobs);
 
@@ -41,19 +35,22 @@ const Details = () => {
 
   const handleInputChange = event => {
     const value = event.target.value;
-    setInputValue(input => ({ label: value, value: value }));
+    setInputValue(value);
   };
 
   const handleJobSave = event => {
     event.preventDefault();
-    console.log('Input saved: ' + inputValue);
-    setJobs(inputValue);
+    const data = { label: inputValue, value: inputValue.toLowerCase() };
+    setJobs(prevValue => ({
+      ...prevValue,
+      ...data
+    }));
     setJobForm(false);
   };
 
   return (
     <>
-    <div className={styles.graph}></div>
+    <Graph />
     <div className={styles.container}>
       <div className={styles.filter}>
         <div
@@ -84,7 +81,8 @@ const Details = () => {
                   onChange={handleInputChange}
                   value={inputValue.label}
                 />
-                <SaveRoundedIcon
+                <Save
+                  className={styles.icon}
                   onClick={handleJobSave}
                 />
               </div>
@@ -93,51 +91,16 @@ const Details = () => {
                 className={styles.addItem}
                 onClick={() => setJobForm(true)}
               >
-                <AddCircleOutlineRoundedIcon />
+                <Plus className={styles.icon} />
                 <span>Add Job</span>
               </div>
             }
           </div>
         }
       </div>
-      <div className={styles.list}>
-        <div className={styles.listItem}>
-          <div className={styles.details}>
-            <div className={styles.job}>Kleiderverkauf</div>
-            <div className={styles.source}>eBay</div>
-          </div>
-          <div className={styles.amount}>
-            + 50.00 €
-          </div>
-        </div>
-        <div className={styles.listItem}>
-          <div className={styles.details}>
-            <div className={styles.job}>Nachhilfe</div>
-            <div className={styles.source}>Sofatutor</div>
-          </div>
-          <div className={styles.amount}>
-            + 20.00 €
-          </div>
-        </div>
-        <div className={styles.listItem}>
-          <div className={styles.details}>
-            <div className={styles.job}>Nachhilfe</div>
-            <div className={styles.source}>Sofatutor</div>
-          </div>
-          <div className={styles.amount}>
-            + 20.00 €
-          </div>
-        </div>
-        <div className={styles.listItem}>
-          <div className={styles.details}>
-            <div className={styles.job}>Nachhilfe</div>
-            <div className={styles.source}>Sofatutor</div>
-          </div>
-          <div className={styles.amount}>
-            + 20.00 €
-          </div>
-        </div>
-      </div>
+      <IncomeProvider>
+        <List />
+      </IncomeProvider>
       {/* <div className={styles.tabs}>
         {
           tabs.map((item, index) => {

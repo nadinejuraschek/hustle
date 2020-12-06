@@ -1,11 +1,16 @@
+// CONTEXT
+import { JobProvider } from 'context/JobContext';
+
 // COMPONENTS
 import Details from 'components/Details';
 
 const Dashboard = () => {
   return (
-    <main className='main'>
-      <Details />
-    </main>
+    <JobProvider>
+      <main className='main'>
+        <Details />
+      </main>
+    </JobProvider>
   );
 };
 

@@ -28,13 +28,25 @@ const Navbar = () => {
           onClose={() => setOpenNav(false)}
         >
           <div className={styles.sidenav}>
-            <NavLink exact to='/' activeClassName={styles.active}>
+            <NavLink
+              exact to='/'
+              activeClassName={styles.active}
+              onClick={() => setOpenNav(false)}
+            >
               {t('NAV.DASHBOARD')}
             </NavLink>
-            <NavLink exact to='/create' activeClassName={styles.active}>
+            <NavLink
+              exact to='/create'
+              activeClassName={styles.active}
+              onClick={() => setOpenNav(false)}
+            >
               {t('NAV.ADD')}
             </NavLink>
-            <NavLink to='/playground' activeClassName={styles.active}>
+            <NavLink
+              to='/playground'
+              activeClassName={styles.active}
+              onClick={() => setOpenNav(false)}
+            >
               Playground
             </NavLink>
           </div>

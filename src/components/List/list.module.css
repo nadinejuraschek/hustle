@@ -1,0 +1,70 @@
+.list {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 1rem;
+
+  max-height: 30rem;
+  overflow-y: scroll;
+}
+
+.listItem {
+  display: grid;
+  grid-template-columns: 60% 40%;
+  grid-template-rows: 1fr;
+  grid-gap: 5px;
+
+  font-size: 1.6rem;
+  font-weight: bold;
+  height: 7rem;
+  padding: 0 2.5rem 0 1.5rem;
+}
+
+.details {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 5px;
+}
+
+.job {
+  color: var(--blue_medium);
+}
+
+.source {
+  color: var(--grey_medium);
+  font-size: 1.4rem;
+}
+
+.amount {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+}
+
+.positive {
+  color: var(--green);
+}
+
+.negative {
+  color: var(--red);
+}
+
+.addItem {
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+
+  border-radius: 0 0 4px 4px;
+  color: var(--blue_medium);
+  font-size: 1.8rem;
+  font-weight: bold;
+  padding: 0 2.5rem 0 1.5rem;
+
+  height: 7rem;
+}
+
+.icon {
+  height: 3.5rem;
+  width: 3.5rem;
+}
