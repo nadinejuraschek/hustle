@@ -6,7 +6,11 @@
   width: 100%;
 }
 
-.tabs {
+.graph {
+  height: 30rem;
+}
+
+/* .tabs {
   display: grid;
   grid-template-columns: repeat(auto-fit, calc(100% / 2));
   grid-template-rows: auto;
@@ -28,4 +32,124 @@
   border-bottom: 2px solid var(--blue_medium);
   color: var(--blue_medium);
   font-weight: bold;
+} */
+
+.filter {
+  border-bottom: 1px solid var(--grey_medium);
+  color: var(--blue-medium);
+  position: relative;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.filterBtn {
+  font-size: 1.6rem;
+  font-weight: bold;
+  padding: 0 1.5rem;
+
+  display: flex;
+  align-items: center;
+
+  height: 5rem;
+  width: 20rem;
+}
+
+.dropdown {
+  background-color: var(--white);
+  border-radius: 4px;
+  box-shadow: 0px 3px 1px -2px rgba(0,0,0,0.2), 0px 2px 2px 0px rgba(0,0,0,0.14), 0px 1px 5px 0px rgba(0,0,0,0.12);
+
+  position: absolute;
+  top: 5.5rem;
+
+  width: 20rem;
+  z-index: 5;
+}
+
+.item, .addItem, .formItem {
+  border-bottom: 1px solid var(--blue_lightest);
+  font-size: 1.6rem;
+  height: 5rem;
+  padding: 0 1.5rem;
+
+  display: flex;
+  align-items: center;
+}
+
+.item:hover, .addItem:hover {
+  background-color: var(--blue_light);
+}
+
+.addItem {
+  background-color: var(--blue_medium);
+  color: var(--white);
+  font-weight: bold;
+
+  gap: 1.5rem;
+}
+
+.formItem {
+  gap: 1rem;
+  padding: 0 1rem;
+}
+
+.input {
+  background-color: var(--blue_lightest);
+  border: none;
+  border-radius: 4px;
+  height: 3rem;
+  padding: 0 5px;
+}
+
+.input:active, .input:focus {
+  border: 1px solid var(--blue_medium);
+}
+
+.list {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 1rem;
+
+  max-height: 30rem;
+  overflow-y: scroll;
+}
+
+.listItem {
+  display: grid;
+  grid-template-columns: 60% 40%;
+  grid-template-rows: 1fr;
+  grid-gap: 5px;
+
+  height: 7rem;
+  padding: 0 2.5rem 0 1.5rem;
+}
+
+.details {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 5px;
+}
+
+.job {
+  color: var(--blue_medium);
+  font-size: 1.6rem;
+  font-weight: bold;
+}
+
+.source {
+  color: var(--grey_medium);
+  font-size: 1.4rem;
+  font-weight: bold;
+}
+
+.amount {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+
+  font-size: 1.6rem;
 }
