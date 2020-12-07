@@ -10,7 +10,7 @@
     },
     "SOURCE": {
       "LABEL": "Source",
-      "ERROR": "Please choose the source."
+      "ERROR": "Please choose a source."
     },
     "AMOUNT": {
       "LABEL": "Amount",
@@ -20,6 +20,7 @@
       "LABEL": "Color",
       "ERROR": "Please pick a color."
     },
+    "CANCEL": "Cancel",
     "SUBMIT": "Submit"
   },
   "BOARD": {

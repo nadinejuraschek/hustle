@@ -1,7 +1,7 @@
 .form {
   display: flex;
   flex-direction: column;
-  gap: 2rem;
+  gap: 3rem;
 }
 
 .twoFields {
@@ -11,20 +11,10 @@
 }
 
 .twoFields input {
-  width: 22rem;
+
 }
 
-.color {
-  height: 5rem;
-  width: 8rem;
-
-  display: flex;
-  align-items: center;
-  justify-content: center;
+.color > div {
+  display: none;
 }
 
-.color > button[data-testid] {
-  object-fit: contain;
-  height: 4rem;
-  width: 4rem;
-}

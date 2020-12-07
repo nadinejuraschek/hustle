@@ -1,7 +1,7 @@
 // STYLES
 import styles from './input.module.css';
 
-const Input = ({ currency, error, formRef, label, name, options, placeholder, selecter, type }) => {
+const Input = ({ currency, error, formRef, handleChange, label, name, options, placeholder, selecter, type }) => {
   return (
     <div className={styles.field}>
       <label htmlFor={name}>{label}</label>
@@ -14,7 +14,7 @@ const Input = ({ currency, error, formRef, label, name, options, placeholder, se
         </select>
         :
         <>
-        <input name={name} placeholder={placeholder} type={type} ref={formRef} />
+        <input onChange={handleChange} name={name} placeholder={placeholder} type={type} ref={formRef} />
         { currency && <span className={styles.currency}>€</span>}
         </>
       }

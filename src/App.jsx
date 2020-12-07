@@ -4,6 +4,7 @@ import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 
 // COMPONENTS
 import Layout from 'components/Layout';
+import Spinner from 'components/Spinner';
 
 // PAGES
 import Create from 'pages/Create';
@@ -12,7 +13,7 @@ import Playground from 'pages/Playground';
 
 const App = () => {
   return (
-    <Suspense fallback={<div>Loading...</div>}>
+    <Suspense fallback={<Spinner fullScreen />}>
       <Router>
         <Switch>
           <Route exact path='/'>
@@ -25,9 +26,6 @@ const App = () => {
               <Create />
             </Layout>
           </Route>
-          {/* <Route exact path='/'>
-              
-          </Route> */}
           <Route exact path='/playground'>
             <Playground />
           </Route>

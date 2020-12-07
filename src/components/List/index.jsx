@@ -2,8 +2,9 @@
 import { useState } from 'react';
 
 // COMPONENTS
-import { IncomeModal } from 'components/Modal';
+import Modal from 'components/Modal';
 import { Plus } from 'components/Icon';
+import Form from 'components/Form';
 
 // STYLES
 import styles from './list.module.css';
@@ -33,7 +34,7 @@ const List = ({ list }) => {
         list && list.map((item, index) => <ListItem item={item} key={index} />)
       }
       {
-        incomeForm && <IncomeModal handleClose={setIncomeForm} />
+        incomeForm && <Modal title="Add Income"><Form handleCancel={() => setIncomeForm(false)} /></Modal>
       }
       {/* IF NO JOBS, ADD JOB */}
       <div className={styles.addItem} onClick={() => setIncomeForm(true)}>

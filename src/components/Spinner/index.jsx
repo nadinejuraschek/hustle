@@ -1,16 +1,32 @@
 // STYLED COMPONENTS
 import styles from './spinner.module.css';
 
-const Spinner = () => {
+const Spinner = ({ fullScreen }) => {
   return (
-    <div className={styles.spinner}>
-      <div className={styles.spinnerDots} />
-      <div className={styles.spinnerDots} />
-      <div className={styles.spinnerDots} />
-      <div className={styles.spinnerDots} />
-      <div className={styles.spinnerDots} />
-      <div className={styles.spinnerDots} />
-    </div>
+    <>
+    {
+      fullScreen ?
+      <div className={styles.full}>
+        <div className={styles.spinner}>
+          <div className={styles.spinnerDots} />
+          <div className={styles.spinnerDots} />
+          <div className={styles.spinnerDots} />
+          <div className={styles.spinnerDots} />
+          <div className={styles.spinnerDots} />
+          <div className={styles.spinnerDots} />
+        </div>
+      </div>
+      :
+      <div className={styles.spinner}>
+        <div className={styles.spinnerDots} />
+        <div className={styles.spinnerDots} />
+        <div className={styles.spinnerDots} />
+        <div className={styles.spinnerDots} />
+        <div className={styles.spinnerDots} />
+        <div className={styles.spinnerDots} />
+      </div>
+    }
+    </>
   );
 };
 

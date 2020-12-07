@@ -2,7 +2,8 @@
 import { useContext, useState } from 'react';
 
 // DEPENDENCIES
-import { ColorPicker } from 'material-ui-color';
+import { useForm } from 'react-hook-form';
+import { yupResolver } from '@hookform/resolvers/yup';
 import * as yup from 'yup';
 
 // TRANSLATION
@@ -12,16 +13,22 @@ import { useTranslation } from 'react-i18next';
 import { JobContext } from 'context/JobContext';
 
 // COMPONENTS
+import Color from 'components/Color';
 import Input from 'components/Input';
 import Button from 'components/Button';
 
 // STYLES
 import styles from './form.module.css';
 
-const Form = () => {
+// HELPER
+export const normalizeNumber = (value: string) => {
+  return value.match('^[0-9][0-9.]*$');
+};
+
+const Form = ({ handleCancel }) => {
   const { t } = useTranslation();
   const { jobs, setJobs } = useContext(JobContext);
-  
+  const [data, setData] = useState();
 
   // SCHEMA VALIDATION
   const schema = yup.object().shape({
@@ -31,49 +38,80 @@ const Form = () => {
       .oneOf(jobs, t('FORM.TOPIC.ERROR')),
     source: yup
       .string()
-      .lowercase()
       .required(t('FORM.SOURCE.ERROR')),
     amount: yup
-      .number()
+      .string()
       .required(t('FORM.AMOUNT.ERROR')),
+    color: yup
+      .string(),
+    timestamp: yup
+      .date()
+      .default(() => (new Date())),
   });
+
+  const { register, handleSubmit, errors, formState } = useForm({
+    defaultValues: {
+      job: '',
+      source: '',
+      amount: 0,
+      color: '#FF8562',
+      timestamp: new Date(),
+    },
+    resolver: yupResolver(schema),
+    mode: "onChange",
+  });
+
+  const formSubmit = (formData) => {
+    console.log(formData);
+  };
 
   return (
     <form
       className={styles.form}
-      autoComplete="off"
-      // onSubmit={() => handleSubmit(formSubmit)}
+      autoComplete='off'
+      onSubmit={handleSubmit(formSubmit)}
     >
       <Input
-        // error={errors.job}
+        error={errors.job}
         label={t('FORM.JOB.LABEL')}
-        name="job"
+        name='job'
         selecter
+        formRef={register}
       />
       <Input
-        // error={errors.source}
+        error={errors.source}
         label={t('FORM.SOURCE.LABEL')}
-        name="source"
+        name='source'
+        formRef={register}
+      />
+      <Input
+        currency
+        error={errors.amount}
+        label={t('FORM.AMOUNT.LABEL')}
+        name='amount'
+        formRef={register}
+        handleChange={(event) => {
+          const { value } = event.target;
+          event.target.value = normalizeNumber(value);
+        }}
+      />
+      <Color
+        formRef={register}
+        label="Color"
+        name="color"
       />
       <div className={styles.twoFields}>
-        <Input
-          currency
-          // error={errors.amount}
-          label={t('FORM.AMOUNT.LABEL')}
-          name="amount"
+        <Button
+          label={t('FORM.CANCEL')}
+          onClick={handleCancel}
+          outline
         />
-        <div className={styles.color}>
-          <ColorPicker
-            defaultValue="#FF8562"
-            hideTextfield
-          />
-        </div>
-      </div>
         <Button
           label={t('FORM.SUBMIT')}
           type="submit"
           // disabled={}
         />
+      </div>
     </form>
   );
 };
