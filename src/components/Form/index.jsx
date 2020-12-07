@@ -1,7 +1,8 @@
 // REACT
-import { useContext, useState } from 'react';
+import { useContext } from 'react';
 
 // DEPENDENCIES
+import { v4 as uuidv4 } from 'uuid';
 import { useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 import * as yup from 'yup';
@@ -10,10 +11,10 @@ import * as yup from 'yup';
 import { useTranslation } from 'react-i18next';
 
 // CONTEXT
-import { JobContext } from 'context/JobContext';
+import { GlobalContext } from 'context/GlobalContext';
 
 // COMPONENTS
-import Color from 'components/Color';
+// import Color from 'components/Color';
 import Input from 'components/Input';
 import Button from 'components/Button';
 
@@ -27,20 +28,22 @@ export const normalizeNumber = (value) => {
 
 const Form = () => {
   const { t } = useTranslation();
-  const { jobs, setJobs } = useContext(JobContext);
+  const { jobs, addTransaction } = useContext(GlobalContext);
 
   // SCHEMA VALIDATION
   const schema = yup.object().shape({
+    id: yup
+      .number(),
     job: yup
       .string()
-      .required(t('FORM.JOB.ERROR'))
-      .oneOf(jobs, t('FORM.TOPIC.ERROR')),
+      .required(t('FORM.JOB.ERROR')),
     source: yup
       .string()
       .required(t('FORM.SOURCE.ERROR')),
     amount: yup
       .string()
-      .required(t('FORM.AMOUNT.ERROR')),
+      .required(t('FORM.AMOUNT.ERROR'))
+      .min(1,t('FORM.AMOUNT.ERROR')),
     // color: yup
     //   .string(),
     timestamp: yup
@@ -50,6 +53,7 @@ const Form = () => {
 
   const { register, handleSubmit, errors, formState } = useForm({
     defaultValues: {
+      id: uuidv4(),
       job: '',
       source: '',
       amount: 0,
@@ -60,8 +64,9 @@ const Form = () => {
     mode: "onChange",
   });
 
-  const formSubmit = (formData) => {
-    console.log(formData);
+  const formSubmit = formData => {
+    // console.log(formData);
+    addTransaction(formData);
   };
 
   return (
@@ -72,10 +77,11 @@ const Form = () => {
     >
       <Input
         error={errors.job}
+        formRef={register}
         label={t('FORM.JOB.LABEL')}
         name='job'
+        options={jobs}
         selecter
-        formRef={register}
       />
       <Input
         error={errors.source}
@@ -104,7 +110,7 @@ const Form = () => {
       <Button
         label={t('FORM.SUBMIT')}
         type="submit"
-        // disabled={}
+        disabled={!formState.isValid}
       />
     </form>
   );

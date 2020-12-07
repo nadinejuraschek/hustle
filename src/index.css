@@ -73,7 +73,7 @@ table {
 
 .view {
 	background-color: var(--grey_light);
-	height: calc(100vh - 12rem);
+	min-height: calc(100vh - 12rem);
 }
 
 .main {

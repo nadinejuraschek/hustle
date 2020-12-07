@@ -3,9 +3,6 @@
   flex-direction: column;
   justify-content: center;
   gap: 1rem;
-
-  max-height: 30rem;
-  overflow-y: scroll;
 }
 
 .listItem {

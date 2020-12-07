@@ -1,5 +1,5 @@
 // REACT
-import { useContext, useState } from 'react';
+import { useContext, useEffect, useState } from 'react';
 
 // DEPENDENCIES
 
@@ -13,16 +13,14 @@ import List from 'components/List';
 import styles from './details.module.css';
 
 // CONTEXT
-import { JobContext } from 'context/JobContext';
-import { IncomeProvider } from 'context/IncomeContext';
+import { GlobalContext } from 'context/GlobalContext';
 
 const Details = () => {
-  const { jobs, setJobs } = useContext(JobContext);
-  const [ inputValue, setInputValue ] = useState('');
-  const [ dropdown, setDropdown ] = useState(false);
-  const [ jobForm, setJobForm ] = useState(false);
+  const { jobs, transactions, addJob } = useContext(GlobalContext);
 
-  console.log(jobs);
+  // Dropdown logic
+  const [ dropdown, setDropdown ] = useState(false);
+  const [ selectedJob, setSelectedJob ] = useState({ label: "All Jobs", value: '' });
 
   const handleDropdown = () => {
     if (dropdown === false) {
@@ -33,6 +31,15 @@ const Details = () => {
     };
   };
 
+  const handleSelectedJob = (label) => {
+    setSelectedJob(label);
+    setDropdown(false);
+  };
+
+  // ADD JOB logic
+  const [ inputValue, setInputValue ] = useState('');
+  const [ jobForm, setJobForm ] = useState(false);
+
   const handleInputChange = event => {
     const value = event.target.value;
     setInputValue(value);
@@ -41,31 +48,42 @@ const Details = () => {
   const handleJobSave = event => {
     event.preventDefault();
     const data = { label: inputValue, value: inputValue.toLowerCase() };
-    setJobs(prevValue => ({
-      ...prevValue,
-      ...data
-    }));
+    addJob(data);
     setJobForm(false);
   };
 
+  // FILTER TRANSACTIONS logic
+  const [ list, setList ] = useState([]);
+  useEffect(() => {
+    if (selectedJob.value === '') {
+      setList(transactions);
+    } else {
+      const filteredList = transactions.filter(transaction => transaction.job === selectedJob.value);
+      setList(filteredList);
+    };
+  }, [transactions, selectedJob]);
+
   return (
     <>
-    <Graph />
+    <Graph list={list} />
     <div className={styles.container}>
       <div className={styles.filter}>
         <div
           className={styles.filterBtn}
           onClick={() => handleDropdown()}
         >
-          All Jobs
+          {selectedJob.label}
         </div>
         { dropdown &&
           <div className={styles.dropdown}>
+            <div className={styles.item} onClick={() => handleSelectedJob({ label: "All Jobs", value: '' })}>
+              All Jobs
+            </div>
             {
               jobs.length > 1 && jobs.map((job, index) => {
                 return (
-                  <div className={styles.item} kex={index}>
-                    Item
+                  <div className={styles.item} key={index} onClick={() => handleSelectedJob(job)}>
+                    {job.label}
                   </div>
                 );
               })
@@ -98,9 +116,7 @@ const Details = () => {
           </div>
         }
       </div>
-      <IncomeProvider>
-        <List />
-      </IncomeProvider>
+      <List list={list} />
       {/* <div className={styles.tabs}>
         {
           tabs.map((item, index) => {
