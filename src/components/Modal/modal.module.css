@@ -20,8 +20,24 @@
   background-color: var(--white);
   border-radius: 4px;
   padding: 2.5rem;
+  position: relative;
 
   width: 75%;
+}
+
+.close {
+  position: absolute;
+  top: 2rem;
+  right: 2rem;
+
+  stroke: var(--grey_medium);
+
+  height: 2.5rem;
+  width: 2.5rem;
+}
+
+.close:hover {
+  cursor: pointer;
 }
 
 .modal h2 {

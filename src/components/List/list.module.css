@@ -55,13 +55,12 @@
   align-items: center;
   gap: 1.5rem;
 
+  border-top: 1px solid var(--grey_medium);
   border-radius: 0 0 4px 4px;
   color: var(--blue_medium);
   font-size: 1.8rem;
   font-weight: bold;
-  padding: 0 2.5rem 0 1.5rem;
-
-  height: 7rem;
+  padding: 1.5rem 2.5rem 1.5rem 1.5rem;
 }
 
 .icon {

@@ -23,6 +23,7 @@
 }
 
 .logo {
+  color: var(--blue_dark);
   font-size: 2.5rem;
   font-weight: bold;
 }
@@ -98,6 +99,7 @@
   flex-direction: column;
 
   background-color: var(--grey_light);
+  color: var(--blue_dark);
   padding: 7rem 0 5rem;
 
   height: 100vh;

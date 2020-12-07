@@ -1,10 +1,13 @@
 // REACT
-import { useState } from 'react';
+import { useContext, useEffect, useState } from 'react';
 
 // COMPONENTS
 import Modal from 'components/Modal';
 import { Plus } from 'components/Icon';
 import Form from 'components/Form';
+
+// CONTEXT
+import { GlobalContext } from 'context/GlobalContext';
 
 // STYLES
 import styles from './list.module.css';
@@ -25,8 +28,19 @@ const ListItem = ({ item }) => {
   );
 };
 
-const List = ({ list }) => {
+const List = ({ selectedJob }) => {
   const [ incomeForm, setIncomeForm ] = useState(false);
+  const { jobs, transactions } = useContext(GlobalContext);
+  const [ list, setList ] = useState([]);
+
+  useEffect(() => {
+    if (!selectedJob || selectedJob === '') {
+      setList(transactions);
+    } else {
+      const filteredList = transactions.filter(transaction => transaction.job === selectedJob);
+      setList(filteredList);
+    };
+  }, [selectedJob]);
 
   return (
     <div className={styles.list}>
@@ -34,7 +48,7 @@ const List = ({ list }) => {
         list && list.map((item, index) => <ListItem item={item} key={index} />)
       }
       {
-        incomeForm && <Modal title="Add Income"><Form handleCancel={() => setIncomeForm(false)} /></Modal>
+        incomeForm && <Modal title="Add Income" handleCancel={() => setIncomeForm(false)}><Form /></Modal>
       }
       {/* IF NO JOBS, ADD JOB */}
       <div className={styles.addItem} onClick={() => setIncomeForm(true)}>

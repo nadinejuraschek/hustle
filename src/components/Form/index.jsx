@@ -21,14 +21,13 @@ import Button from 'components/Button';
 import styles from './form.module.css';
 
 // HELPER
-export const normalizeNumber = (value: string) => {
+export const normalizeNumber = (value) => {
   return value.match('^[0-9][0-9.]*$');
 };
 
-const Form = ({ handleCancel }) => {
+const Form = () => {
   const { t } = useTranslation();
   const { jobs, setJobs } = useContext(JobContext);
-  const [data, setData] = useState();
 
   // SCHEMA VALIDATION
   const schema = yup.object().shape({
@@ -42,8 +41,8 @@ const Form = ({ handleCancel }) => {
     amount: yup
       .string()
       .required(t('FORM.AMOUNT.ERROR')),
-    color: yup
-      .string(),
+    // color: yup
+    //   .string(),
     timestamp: yup
       .date()
       .default(() => (new Date())),
@@ -54,7 +53,7 @@ const Form = ({ handleCancel }) => {
       job: '',
       source: '',
       amount: 0,
-      color: '#FF8562',
+      // color: '#FF8562',
       timestamp: new Date(),
     },
     resolver: yupResolver(schema),
@@ -83,6 +82,7 @@ const Form = ({ handleCancel }) => {
         label={t('FORM.SOURCE.LABEL')}
         name='source'
         formRef={register}
+        type="text"
       />
       <Input
         currency
@@ -94,24 +94,18 @@ const Form = ({ handleCancel }) => {
           const { value } = event.target;
           event.target.value = normalizeNumber(value);
         }}
+        type="number"
       />
-      <Color
+      {/* <Color
         formRef={register}
         label="Color"
         name="color"
+      /> */}
+      <Button
+        label={t('FORM.SUBMIT')}
+        type="submit"
+        // disabled={}
       />
-      <div className={styles.twoFields}>
-        <Button
-          label={t('FORM.CANCEL')}
-          onClick={handleCancel}
-          outline
-        />
-        <Button
-          label={t('FORM.SUBMIT')}
-          type="submit"
-          // disabled={}
-        />
-      </div>
     </form>
   );
 };
