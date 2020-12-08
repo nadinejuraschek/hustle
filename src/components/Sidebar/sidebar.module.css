@@ -1,0 +1,35 @@
+.sidebar {
+  display: none;
+}
+
+.sidebar a {
+  border-bottom: 1px solid var(--grey_medium);
+  color: var(--blue_dark);
+  font-size: 1.8rem;
+  padding: 0 2.4rem;
+  text-decoration: none;
+
+  display: flex;
+  align-items: center;
+
+  height: 6rem;
+}
+
+.active {
+  font-weight: bold;
+}
+
+@media only screen and (min-width: 1024px) {
+  .sidebar {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+
+    height: calc(100vh - 14rem);
+
+    padding-bottom: 2rem;
+
+    grid-column: 1 / 2;
+    grid-row: 2 / 3;
+  }
+}

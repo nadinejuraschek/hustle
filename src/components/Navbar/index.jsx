@@ -36,14 +36,14 @@ const Navbar = () => {
             >
               {t('NAV.DASHBOARD')}
             </NavLink>
-            <NavLink
+            {/* <NavLink
               exact
               to='/create'
               activeClassName={styles.active}
               onClick={() => setOpenNav(false)}
             >
               {t('NAV.ADD')}
-            </NavLink>
+            </NavLink> */}
             <NavLink
               to='/playground'
               activeClassName={styles.active}

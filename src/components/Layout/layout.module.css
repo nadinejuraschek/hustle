@@ -1,5 +1,11 @@
-.layout {
+.mobileLayout {
   display: grid;
   grid-template-columns: 1fr;
+  grid-template-rows: 7rem min-content 5rem;
+}
+
+.desktopLayout {
+  display: grid;
+  grid-template-columns: 28rem auto;
   grid-template-rows: 7rem min-content 5rem;
 }

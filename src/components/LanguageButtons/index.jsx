@@ -1,5 +1,5 @@
 // TRANSLATION
-import i18n from 'i18n';
+import { useTranslation } from 'react-i18next';
 
 // STYLES
 import styles from './lang.module.css';
@@ -9,8 +9,9 @@ import { ReactComponent as DE } from 'assets/icons/de.svg';
 import { ReactComponent as EN } from 'assets/icons/en.svg';
 
 const LangBtn = () => {
+  const { i18n } = useTranslation();
+
   const changeLanguage = (lng) => {
-    console.log('changeLang ', 'change language');
     i18n.changeLanguage(lng);
   };
 

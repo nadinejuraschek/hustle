@@ -84,3 +84,21 @@ table {
 .main {
 	padding: 2.4rem;
 }
+
+@media only screen and (min-width: 768px) {
+	.main {
+		padding: 4rem;
+		max-width: 70rem;
+		margin: auto;
+	}
+}
+
+@media only screen and (min-width: 1024px) {
+	.view {
+		grid-column: 2 / 3;
+		grid-row: 2 / 3;
+
+		height: calc(100vh - 12rem);
+		overflow-y: scroll;
+	}
+}
