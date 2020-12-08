@@ -1,4 +1,4 @@
-.footer {
+.container {
   border-top: 1px solid var(--grey_medium);
   color: var(--blue_dark);
   font-size: 1.2rem;
@@ -11,12 +11,25 @@
   justify-content: center;
 }
 
-.content {
+.footer {
   padding: 2.4rem;
 
   display: flex;
   align-items: center;
+  justify-content: center;
+  gap: 4px;
 
   width: 100%;
   max-width: 120rem;
+}
+
+.footer a {
+  color: var(--blue_dark);
+  text-decoration: none;
+}
+
+.footer a:hover {
+  color: var(--orange_medium);
+  cursor: pointer;
+  text-decoration: none;
 }

@@ -5,7 +5,8 @@ const Footer = () => {
   return (
     <div className={styles.container}>
       <footer className={styles.footer}>
-        © { new Date().getFullYear() } Nadine Juraschek
+        <span>© { new Date().getFullYear() }</span>
+        <a href='https://github.com/nadinejuraschek'>Nadine Juraschek</a>
       </footer>
     </div>
   );
