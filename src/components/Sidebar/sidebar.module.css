@@ -27,6 +27,7 @@
 
     height: calc(100vh - 14rem);
 
+    background-color: var(--grey_light);
     border-right: 1px solid var(--grey_medium);
     padding-bottom: 2rem;
 

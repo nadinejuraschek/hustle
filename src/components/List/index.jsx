@@ -19,10 +19,7 @@ import Form from 'components/Form';
 import styles from './list.module.css';
 
 // HELPERS
-const capitalize = (s) => {
-  if (typeof s !== 'string') return ''
-  return s.charAt(0).toUpperCase() + s.slice(1)
-}
+import { capitalize } from 'helpers';
 
 const ListItem = ({ item }) => {
   const { job, source, amount } = item;

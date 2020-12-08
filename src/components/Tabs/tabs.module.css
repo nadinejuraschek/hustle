@@ -16,6 +16,10 @@
   justify-content: center;
 }
 
+.tab:hover {
+  cursor: pointer;
+}
+
 .active {
   border-bottom: 2px solid var(--blue_medium);
   color: var(--blue_medium);

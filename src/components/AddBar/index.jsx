@@ -1,3 +1,6 @@
+// COMPONENTS
+import Form from 'components/Form';
+
 // STYLES
 import styles from './addbar.module.css';
 
