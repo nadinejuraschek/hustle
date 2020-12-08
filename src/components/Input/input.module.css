@@ -21,6 +21,7 @@
 }
 
 .field input, .field select {
+  background-color: var(--white);
   border: 1px solid var(--blue_light);
   border-radius: 4px;
   color: var(--blue_dark);
@@ -34,11 +35,18 @@
   border: 2px solid var(--blue_medium);
 }
 
+.currencyInput {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.currencyInput input {
+  width: 70%;
+}
+
 .currency {
   font-size: 1.8rem;
-
-  position: absolute;
-  right: 1rem;
 }
 
 .error {

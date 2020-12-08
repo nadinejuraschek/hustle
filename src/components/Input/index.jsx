@@ -13,9 +13,14 @@ const Input = ({ currency, error, formRef, handleChange, label, name, options, p
           }
         </select>
         :
+        currency ?
+        <div className={styles.currencyInput}>
+        <input onChange={handleChange} max="10000.00" min="0.00" name={name} placeholder={placeholder} step="0.01" type={type} ref={formRef} />
+        <span className={styles.currency}>€</span>
+        </div>
+        :
         <>
         <input onChange={handleChange} name={name} placeholder={placeholder} type={type} ref={formRef} />
-        { currency && <span className={styles.currency}>€</span>}
         </>
       }
       { error && <div className={styles.error}>{error.message}</div> }

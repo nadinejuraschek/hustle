@@ -34,9 +34,9 @@ const Graph = ({ list }) => {
         ],
         backgroundColor: [
           '#FD9579',
-          '#FD9579',
-          '#FD9579',
-          '#FD9579',
+          '#219ad3',
+          '#86cc6a',
+          '#59286e',
         ],
       },
     ],
