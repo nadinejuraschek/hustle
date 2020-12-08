@@ -4,6 +4,9 @@ import {
   useState
 } from 'react';
 
+// TRANSLATION
+import { useTranslation } from 'react-i18next';
+
 // COMPONENTS
 import Modal from 'components/Modal';
 import { Plus } from 'components/Icon';
@@ -39,6 +42,7 @@ const ListItem = ({ item }) => {
 };
 
 const List = ({ list}) => {
+  const { t } = useTranslation();
   const [ incomeForm, setIncomeForm ] = useState(false);
   // const { jobs } = useContext(GlobalContext);
 
@@ -51,11 +55,11 @@ const List = ({ list}) => {
       {/* IF NO JOBS, ADD JOB */}
       <div className={styles.addItem} onClick={() => setIncomeForm(true)}>
         <Plus className={styles.icon} />
-        <span>Add Income</span>
+        <span>{t('FORM.SOURCE.ADD')}</span>
       </div>
     </div>
     {
-      incomeForm && <Modal title="Add Income" handleCancel={() => setIncomeForm(false)}><Form /></Modal>
+      incomeForm && <Modal title={t('FORM.SOURCE.ADD')} handleCancel={() => setIncomeForm(false)}><Form /></Modal>
     }
     </>
   );

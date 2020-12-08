@@ -88,7 +88,7 @@ const Form = () => {
         label={t('FORM.SOURCE.LABEL')}
         name='source'
         formRef={register}
-        type="text"
+        type='text'
       />
       <Input
         currency
@@ -100,7 +100,7 @@ const Form = () => {
           const { value } = event.target;
           event.target.value = normalizeNumber(value);
         }}
-        type="number"
+        type='number'
       />
       {/* <Color
         formRef={register}
@@ -109,7 +109,7 @@ const Form = () => {
       /> */}
       <Button
         label={t('FORM.SUBMIT')}
-        type="submit"
+        type='submit'
         disabled={!formState.isValid}
       />
     </form>

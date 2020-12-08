@@ -1,6 +1,9 @@
 // REACT
 import { useContext, useEffect, useState } from 'react';
 
+// TRANSLATION
+import { useTranslation } from 'react-i18next';
+
 // STYLES
 import styles from './filter.module.css';
 
@@ -13,11 +16,12 @@ import { Save } from 'components/Icon';
 import { ReactComponent as ChevronDown } from 'assets/icons/chevron-down.svg';
 
 const Filter = ({ handleList }) => {
+  const { t } = useTranslation();
   const { jobs, transactions, addJob } = useContext(GlobalContext);
 
   // Dropdown logic
   const [ dropdown, setDropdown ] = useState(false);
-  const [ selectedJob, setSelectedJob ] = useState({ label: "All Jobs", value: '' });
+  const [ selectedJob, setSelectedJob ] = useState({ label: t('FORM.JOB.ALL'), value: '' });
 
   const handleDropdown = () => {
     if (dropdown === false) {
@@ -69,9 +73,9 @@ const Filter = ({ handleList }) => {
         <div className={styles.dropdown}>
           <div
             className={styles.item}
-            onClick={() => handleSelectedJob({ label: 'All Jobs', value: '' })}
+            onClick={() => handleSelectedJob({ label: t('FORM.JOB.ALL'), value: '' })}
           >
-            All Jobs
+            {t('FORM.JOB.ALL')}
           </div>
           {jobs.length > 1 &&
             jobs.map((job, index) => {
@@ -89,7 +93,7 @@ const Filter = ({ handleList }) => {
             <div className={styles.formItem}>
               <input
                 className={styles.input}
-                placeholder='Neue Tätigkeit'
+                placeholder={t('FORM.JOB.NEW')}
                 onChange={handleInputChange}
                 value={inputValue.label}
               />
@@ -98,7 +102,7 @@ const Filter = ({ handleList }) => {
           ) : (
             <div className={styles.addItem} onClick={() => setJobForm(true)}>
               <Plus className={styles.icon} />
-              <span>Add Job</span>
+              <span>{t('FORM.JOB.ADD')}</span>
             </div>
           )}
         </div>

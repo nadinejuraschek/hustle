@@ -1,10 +1,14 @@
 // REACT
 import { useEffect, useState } from 'react';
 
+// TRANSLATION
+import { useTranslation } from 'react-i18next';
+
 // STYLES
 import styles from './graph.module.css';
 
 const Graph = ({ list }) => {
+  const { t } = useTranslation();
   const [balance, setBalance] = useState(0);
 
   useEffect(() => {
@@ -19,7 +23,7 @@ const Graph = ({ list }) => {
     <div className={styles.container}>
       <div className={styles.graph}></div>
       <div className={styles.total}>
-        <span className={styles.label}>Balance:</span>
+        <span className={styles.label}>{t('BOARD.TOTAL')}:</span>
         <span>{balance} €</span>
       </div>
     </div>

@@ -1,31 +1,37 @@
 {
   "NAV": {
-    "DASHBOARD": "Dashboard",
-    "ADD": "Add Income"
+    "DASHBOARD": "Dashboard"
   },
   "FORM": {
     "JOB": {
       "LABEL": "Job Activity",
-      "ERROR": "Please choose an activity."
+      "ERROR": "Please choose an activity.",
+      "ALL": "All Jobs",
+      "NEW": "New Job",
+      "ADD": "Add Job"
     },
     "SOURCE": {
       "LABEL": "Source",
-      "ERROR": "Please choose a source."
+      "ERROR": "Please choose a source.",
+      "ADD": "Add Income"
     },
     "AMOUNT": {
       "LABEL": "Amount",
       "ERROR": "Please enter an amount."
     },
+    "LIMIT": {
+      "LABEL": "---",
+      "ERROR": "---"
+    },
     "COLOR": {
-      "LABEL": "Color",
-      "ERROR": "Please pick a color."
+      "LABEL": "Color"
     },
     "CANCEL": "Cancel",
     "SUBMIT": "Submit"
   },
   "BOARD": {
-    "TOTAL": "Total",
+    "TOTAL": "Balance",
     "LIMIT": "Limit",
-    "REMAINDER": "---"
+    "REMAINDER": "Remainder"
   }
 }
