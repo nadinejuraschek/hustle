@@ -4,6 +4,7 @@ import { useState } from 'react';
 // DEPENDENCIES
 
 // COMPONENTS
+import AddBar from 'components/AddBar';
 import Graph from 'components/Graph';
 import Filter from 'components/Filter';
 import List from 'components/List';
@@ -20,11 +21,25 @@ const Details = () => {
 
   return (
     <>
-    <Graph list={list} />
-    <div className={styles.container}>
-      <Filter handleList={setList} />
-      <List list={list} />
-    </div>
+    {
+      size.width < 1024 ?
+      <>
+      <Graph list={list} />
+      <div className={styles.listContainer}>
+        <Filter handleList={setList} />
+        <List list={list} />
+      </div>
+      </>
+      :
+      <div className={styles.grid}>
+        <Graph list={list} />
+        <div className={styles.listContainer}>
+          <Filter handleList={setList} />
+          <List list={list} />
+        </div>
+        <AddBar />
+      </div>
+    }
     </>
   );
 };

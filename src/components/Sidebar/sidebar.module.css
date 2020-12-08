@@ -27,9 +27,14 @@
 
     height: calc(100vh - 14rem);
 
+    border-right: 1px solid var(--grey_medium);
     padding-bottom: 2rem;
 
     grid-column: 1 / 2;
     grid-row: 2 / 3;
+  }
+
+  .sidebar a {
+    padding: 0 4rem;
   }
 }
