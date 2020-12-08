@@ -1,0 +1,33 @@
+.languages {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 3rem;
+}
+
+.languages button {
+  background-color: transparent;
+  border: none;
+  color: var(--blue_dark);
+
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.languages button:hover {
+  cursor: pointer;
+  font-weight: bold;
+}
+
+.languages button:hover .lang {
+  box-shadow: 0px 2px 4px -1px rgba(0,0,0,0.2), 0px 4px 5px 0px rgba(0,0,0,0.14), 0px 1px 10px 0px rgba(0,0,0,0.12);
+}
+
+.lang {
+  border-radius: 4px;
+  box-shadow: 0px 3px 1px -2px rgba(0,0,0,0.2), 0px 2px 2px 0px rgba(0,0,0,0.14), 0px 1px 5px 0px rgba(0,0,0,0.12);
+
+  height: 3rem;
+  width: 3rem;
+}

@@ -69,6 +69,11 @@ table {
 	--orange_gradient: linear-gradient(to bottom, #FF8562, #F0582E);
 	--red: #d13f3f;
 	--white: #ffffff;
+
+	--phone: 600px;
+	--tablet: 768px;
+  --desktop: 1024px;
+  --large: 1280px;
 }
 
 .view {

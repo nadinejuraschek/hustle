@@ -1,25 +1,14 @@
-.container {
+.nav {
   background-color: var(--white);
   border-bottom: 1px solid var(--grey_medium);
-
-  height: 6.9rem;
-  width: 100vw;
-
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.nav {
   font-size: 1.6rem;
-  padding: 2.4rem;
+  padding: 0 2.4rem;
 
   display: flex;
   align-items: center;
   justify-content: space-between;
 
-  width: 100%;
-  max-width: 120rem;
+  height: 6.9rem;
 }
 
 .logo {
@@ -97,10 +86,11 @@
 .sidenav {
   display: flex;
   flex-direction: column;
+  justify-content: space-between;
 
   background-color: var(--grey_light);
   color: var(--blue_dark);
-  padding: 7rem 0 5rem;
+  padding: 7rem 0 2.4rem;
 
   height: 100vh;
   width: 25rem;
@@ -124,11 +114,13 @@
 }
 
 @media only screen and (min-width: 768px) {
-  .menuBtn {
-    display: none;
+  .nav {
+    padding: 0 4rem;
   }
+}
 
-  .links {
-    display: flex;
+@media only screen and (min-width: 1024px) {
+  .menu {
+    display: none;
   }
 }

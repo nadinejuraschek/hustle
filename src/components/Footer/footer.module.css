@@ -1,26 +1,15 @@
-.container {
+.footer {
   border-top: 1px solid var(--grey_medium);
   color: var(--blue_dark);
   font-size: 1.2rem;
-
-  height: 4.9rem;
-  width: 100vw;
-
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.footer {
-  padding: 2.4rem;
+  padding: 0 2.4rem;
 
   display: flex;
   align-items: center;
   justify-content: center;
   gap: 4px;
 
-  width: 100%;
-  max-width: 120rem;
+  height: 4.9rem;
 }
 
 .footer a {
@@ -32,4 +21,10 @@
   color: var(--orange_medium);
   cursor: pointer;
   text-decoration: none;
+}
+
+@media only screen and (min-width: 768px) {
+  .footer {
+    padding: 0 4rem;
+  }
 }
