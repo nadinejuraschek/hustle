@@ -49,7 +49,7 @@ const Graph = ({ list }) => {
     list.map(transaction => {
       return (total = total + parseInt(transaction.amount));
     });
-    setBalance(total);
+    setBalance((Math.round((total * 1) * 100) / 100).toFixed(2));
   }, [list]);
 
   return (

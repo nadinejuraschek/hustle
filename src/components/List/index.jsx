@@ -23,7 +23,7 @@ import { capitalize } from 'helpers';
 
 const ListItem = ({ item }) => {
   const { job, source, amount } = item;
-  const amountNum = amount * 1;
+  const amountNum = (Math.round((amount * 1) * 100) / 100).toFixed(2);
 
   return (
     <div className={styles.listItem}>
