@@ -31,7 +31,16 @@ const Details = () => {
       </div>
       </>
       :
-      <div className={styles.grid}>
+      size.width < 1280 ?
+      <div className={styles.desktopGrid}>
+        <Graph list={list} />
+        <div className={styles.listContainer}>
+          <Filter handleList={setList} />
+          <List list={list} />
+        </div>
+      </div>
+      :
+      <div className={styles.largeGrid}>
         <Graph list={list} />
         <div className={styles.listContainer}>
           <Filter handleList={setList} />

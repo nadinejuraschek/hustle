@@ -24,6 +24,7 @@ const AddBar = () => {
   const handleJobSave = event => {
     event.preventDefault();
     const data = { label: inputValue, value: inputValue.toLowerCase() };
+    console.log('job data ', data);
     // addJob(data);
   };
 
@@ -38,7 +39,7 @@ const AddBar = () => {
           type="text"
           value={inputValue.label}
         />
-        <Button label={t('FORM.SUBMIT')} />
+        <Button label={t('FORM.SUBMIT')} onClick={() => handleJobSave()} />
       </div>
       <div className={styles.addIncome}>
         <h2>{t('FORM.SOURCE.ADD')}</h2>

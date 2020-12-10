@@ -6,7 +6,16 @@
   width: 100%;
 }
 
-.grid {
+.desktopGrid {
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: 36rem auto;
+  grid-gap: 4rem;
+
+  padding: 4rem;
+}
+
+.largeGrid {
   display: grid;
   grid-template-columns: repeat(10, 1fr);
   grid-template-rows: 36rem auto;
