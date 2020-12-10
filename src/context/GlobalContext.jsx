@@ -1,15 +1,15 @@
 // REACT
-import { createContext, useReducer } from 'react';
+import { createContext, useEffect, useReducer, useState } from 'react';
 
 // REDUCERS
 import { AppReducer } from 'reducers/AppReducer';
 
 const initialState = {
   jobs: [
-    { label: "Babysitten", value: 'babysitten' },
-    { label: "Nachhilfe", value: 'nachhilfe' },
-    { label: "Kleiderverkauf", value: 'kleiderverkauf' },
-    { label: "Tanzstunden", value: 'tanzstunden' },
+    { label: "Babysitten", value: 'babysitten', income: 0 },
+    { label: "Nachhilfe", value: 'nachhilfe', income: 0  },
+    { label: "Kleiderverkauf", value: 'kleiderverkauf', income: 0 },
+    { label: "Tanzstunden", value: 'tanzstunden', income: 0 },
     // { label: "Minijob", value: 'minijob' },
   ],
   transactions: [
@@ -27,6 +27,7 @@ export const GlobalContext = createContext(initialState);
 
 export const GlobalContextProvider = ({ children }) => {
   const [state, dispatch] = useReducer(AppReducer, initialState);
+  const [incomeList, setIncomeList] = useState([]);
 
   const addJob = job => {
     dispatch({
@@ -42,12 +43,37 @@ export const GlobalContextProvider = ({ children }) => {
     });
   };
 
+  // DISPLAY TOTAL INCOMES
+  useEffect(() => {
+    const jobs = state.jobs;
+    const transactions = state.transactions;
+
+    let graphIncomes = [];
+    // loop over jobs
+    jobs.map(job => {
+      const name = job.value;
+      let total = 0;
+      // loop over transactions
+      // find all matching transactions
+      const sortedTransactions = transactions.filter(transaction => transaction.job === name);
+      // loop over matching transactions to add incomes
+      sortedTransactions.map(item => {
+        total = total + item.amount
+      });
+      // create array entry
+      // push to array
+      return graphIncomes.push(total);
+    });
+    setIncomeList(graphIncomes);
+  }, [state]);
+
   return (
     <GlobalContext.Provider value={{
       jobs: state.jobs,
       transactions: state.transactions.sort((x, y) => {
         return x.timestamp - y.timestamp;
       }),
+      incomeList,
       addTransaction,
       addJob,
     }}>

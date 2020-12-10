@@ -21,7 +21,7 @@ const Filter = ({ handleList }) => {
 
   // Dropdown logic
   const [ dropdown, setDropdown ] = useState(false);
-  const [ selectedJob, setSelectedJob ] = useState({ label: t('FORM.JOB.ALL'), value: '' });
+  const [ selectedJob, setSelectedJob ] = useState({ label: t('FORM.JOB.ALL'), value: '', income: 0 });
 
   const handleDropdown = () => {
     if (dropdown === false) {
@@ -48,7 +48,7 @@ const Filter = ({ handleList }) => {
 
   const handleJobSave = event => {
     event.preventDefault();
-    const data = { label: inputValue, value: inputValue.toLowerCase() };
+    const data = { label: inputValue, value: inputValue.toLowerCase(), income: 0 };
     addJob(data);
     setJobForm(false);
   };
