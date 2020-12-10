@@ -17,21 +17,35 @@ import styles from './graph.module.css';
 const Graph = ({ list }) => {
   const { t } = useTranslation();
   const [ chartType, setChartType ] = useState('ring');
-  const { jobs } = useContext(GlobalContext);
+  const { jobs, incomeList } = useContext(GlobalContext);
 
   const labels = jobs.map(job => job.label);
+
+  // // DISPLAY TOTAL INCOMES
+  // useEffect(() => {
+  //   // loop over jobs
+  //   jobs.map(job => {
+  //     const name = job.value;
+  //     let total = 0;
+  //     // loop over transactions
+  //     // find all matching transactions
+  //     const sortedTransactions = list.filter(transaction => transaction.job === name);
+  //     // loop over matching transactions to add incomes
+  //     sortedTransactions.map(item => {
+  //       total = total + item.amount
+  //     });
+  //     // create array entry
+  //     // push to array
+  //     return graphIncomes.push(total);
+  //   });
+  // }, [jobs, list]);
 
   const data = {
     labels: labels,
     datasets: [
       {
         label: 'Income',
-        data: [
-          20,
-          140,
-          8,
-          210,
-        ],
+        data: incomeList,
         backgroundColor: [
           '#FD9579',
           '#219ad3',
@@ -42,9 +56,6 @@ const Graph = ({ list }) => {
       },
     ],
   };
-
-  // DISPLAY TOTAL INCOMES
-
 
   // SET BALANCE
   const [balance, setBalance] = useState(0);
