@@ -37,10 +37,14 @@ const Graph = ({ list }) => {
           '#219ad3',
           '#86cc6a',
           '#59286e',
+          '#fcf15c',
         ],
       },
     ],
   };
+
+  // DISPLAY TOTAL INCOMES
+
 
   // SET BALANCE
   const [balance, setBalance] = useState(0);
