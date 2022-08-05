@@ -1,0 +1,41 @@
+.listItem {
+  display: grid;
+  grid-template-columns: 60% 40%;
+  grid-template-rows: 1fr;
+  grid-gap: 5px;
+
+  font-size: 1.6rem;
+  font-weight: bold;
+  height: 7rem;
+  padding: 0 2.5rem 0 1.5rem;
+}
+
+.details {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 5px;
+}
+
+.job {
+  color: var(--blue_medium);
+}
+
+.source {
+  color: var(--grey_medium);
+  font-size: 1.4rem;
+}
+
+.amount {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+}
+
+.positive {
+  color: var(--green);
+}
+
+.negative {
+  color: var(--red);
+}

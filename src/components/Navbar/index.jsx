@@ -1,14 +1,9 @@
-import { Chart } from '../Icon';
+import { Chart } from 'components/Icon';
 import Drawer from '@material-ui/core/Drawer';
 import LanguageButtons from 'components/LanguageButtons';
-// COMPONENTS
 import { NavLink } from 'react-router-dom';
-import { styled } from '@material-ui/core';
-// STYLES
 import styles from './nav.module.css';
-// REACT
 import { useState } from 'react';
-// TRANSLATION
 import { useTranslation } from 'react-i18next';
 
 const Navbar = () => {
