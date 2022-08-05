@@ -1,12 +1,11 @@
-// TRANSLATION
-import { useTranslation } from 'react-i18next';
-
+import { Chart } from '../Icon';
+import LanguageButtons from 'components/LanguageButtons';
 // COMPONENTS
 import { NavLink } from 'react-router-dom';
-import LanguageButtons from 'components/LanguageButtons';
-
 // STYLES
 import styles from './sidebar.module.css';
+// TRANSLATION
+import { useTranslation } from 'react-i18next';
 
 const Sidebar = () => {
   const { t } = useTranslation();
@@ -14,11 +13,8 @@ const Sidebar = () => {
   return (
     <div className={styles.sidebar}>
       <div className={styles.links}>
-        <NavLink
-          exact
-          to='/'
-          activeClassName={styles.active}
-        >
+        <NavLink exact to='/' activeClassName={styles.active}>
+          <Chart className={styles.icon} />
           {t('NAV.DASHBOARD')}
         </NavLink>
         {/* <NavLink
@@ -28,12 +24,6 @@ const Sidebar = () => {
         >
           {t('NAV.ADD')}
         </NavLink> */}
-        <NavLink
-          to='/playground'
-          activeClassName={styles.active}
-        >
-          Playground
-        </NavLink>
       </div>
       <LanguageButtons />
     </div>

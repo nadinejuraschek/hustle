@@ -9,7 +9,7 @@
   justify-content: space-between;
 
   height: 6.9rem;
-  z-index: 1;
+  z-index: 1500;
 }
 
 .logo {
@@ -24,7 +24,14 @@
 
 /* MENU */
 .menu {
+  background-color: var(--white);
+
+  height: 4.5rem;
   width: 4.5rem;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .burgerLines,
@@ -66,6 +73,10 @@
 .open .burgerLines {
   background-color: transparent;
   transition: background-color 0.2s, top 0.2s, left 0.2s, transform 0.2s 0.15s;
+}
+
+.open .burgerLines:before {
+  width: 70%;
 }
 
 .open .burgerLines:before,
@@ -110,8 +121,14 @@
 
   display: flex;
   align-items: center;
+  gap: 1.4rem;
 
   height: 6rem;
+}
+
+.icon {
+  height: 2.6rem;
+  width: 2.6rem;
 }
 
 @media only screen and (min-width: 768px) {
@@ -129,6 +146,6 @@
     grid-column: 1 / -1;
     grid-row: 1 / 2;
 
-    box-shadow: 0 1px 2px 0 rgba(0,0,0,0.14);
+    box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.14);
   }
 }

@@ -1,16 +1,15 @@
-// REACT
-import { useState } from 'react';
-
-// TRANSLATION
-import { useTranslation } from 'react-i18next';
-
-// COMPONENTS
-import { NavLink } from 'react-router-dom';
+import { Chart } from '../Icon';
 import Drawer from '@material-ui/core/Drawer';
 import LanguageButtons from 'components/LanguageButtons';
-
+// COMPONENTS
+import { NavLink } from 'react-router-dom';
+import { styled } from '@material-ui/core';
 // STYLES
 import styles from './nav.module.css';
+// REACT
+import { useState } from 'react';
+// TRANSLATION
+import { useTranslation } from 'react-i18next';
 
 const Navbar = () => {
   const { t } = useTranslation();
@@ -21,7 +20,7 @@ const Navbar = () => {
       <div className={styles.logo}>hustle</div>
       <div
         className={`${styles.menu} ${openNav ? styles.open : ''}`}
-        onClick={() => setOpenNav(true)}
+        onClick={() => setOpenNav(!openNav)}
       >
         <div className={styles.burgerLines}></div>
       </div>
@@ -34,6 +33,7 @@ const Navbar = () => {
               activeClassName={styles.active}
               onClick={() => setOpenNav(false)}
             >
+              <Chart className={styles.icon} />
               {t('NAV.DASHBOARD')}
             </NavLink>
             {/* <NavLink
@@ -44,13 +44,6 @@ const Navbar = () => {
             >
               {t('NAV.ADD')}
             </NavLink> */}
-            <NavLink
-              to='/playground'
-              activeClassName={styles.active}
-              onClick={() => setOpenNav(false)}
-            >
-              Playground
-            </NavLink>
           </div>
           <LanguageButtons />
         </div>
