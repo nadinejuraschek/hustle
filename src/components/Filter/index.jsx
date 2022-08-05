@@ -1,27 +1,24 @@
-// REACT
 import { useContext, useEffect, useState } from 'react';
 
-// TRANSLATION
-import { useTranslation } from 'react-i18next';
-
-// STYLES
-import styles from './filter.module.css';
-
-// CONTEXT
+import Dropdown from './Dropdown';
+import { Filter as FilterIcon } from '../Icon';
 import { GlobalContext } from 'context/GlobalContext';
-
-// ICONS
-import { Plus } from 'components/Icon';
-import { Save } from 'components/Icon';
-import { ReactComponent as ChevronDown } from 'assets/icons/chevron-down.svg';
+import styles from './filter.module.css';
+import { useTranslation } from 'react-i18next';
 
 const Filter = ({ handleList }) => {
   const { t } = useTranslation();
-  const { jobs, transactions, addJob } = useContext(GlobalContext);
+  const { jobs, transactions } = useContext(GlobalContext);
 
-  // Dropdown logic
-  const [ dropdown, setDropdown ] = useState(false);
-  const [ selectedJob, setSelectedJob ] = useState({ label: t('FORM.JOB.ALL'), value: '', income: 0 });
+  const noJobsAvailable = !jobs || jobs.length === 0;
+
+  const [jobForm, setJobForm] = useState(false);
+  const [dropdown, setDropdown] = useState(false);
+  const [selectedJob, setSelectedJob] = useState({
+    label: t('FORM.JOB.ALL'),
+    value: '',
+    income: 0,
+  });
 
   const handleDropdown = () => {
     if (dropdown === false) {
@@ -29,28 +26,12 @@ const Filter = ({ handleList }) => {
     } else {
       setJobForm(false);
       setDropdown(false);
-    };
+    }
   };
 
-  const handleSelectedJob = (label) => {
+  const handleSelectedJob = label => {
     setSelectedJob(label);
     setDropdown(false);
-  };
-
-  // ADD JOB logic
-  const [ inputValue, setInputValue ] = useState('');
-  const [ jobForm, setJobForm ] = useState(false);
-
-  const handleInputChange = event => {
-    const value = event.target.value;
-    setInputValue(value);
-  };
-
-  const handleJobSave = event => {
-    event.preventDefault();
-    const data = { label: inputValue, value: inputValue.toLowerCase(), income: 0 };
-    addJob(data);
-    setJobForm(false);
   };
 
   // FILTER TRANSACTIONS logic
@@ -58,54 +39,31 @@ const Filter = ({ handleList }) => {
     if (selectedJob.value === '') {
       handleList(transactions);
     } else {
-      const filteredList = transactions.filter(transaction => transaction.job === selectedJob.value);
+      const filteredList = transactions.filter(
+        transaction => transaction.job === selectedJob.value
+      );
       handleList(filteredList);
-    };
-  }, [transactions, selectedJob]);
+    }
+  }, [handleList, transactions, selectedJob]);
 
   return (
     <div className={styles.filter}>
-      <div className={styles.filterBtn} onClick={() => handleDropdown()}>
-        {selectedJob.label}
-        <ChevronDown className={styles.down} />
-      </div>
-      {dropdown && (
-        <div className={styles.dropdown}>
-          <div
-            className={styles.item}
-            onClick={() => handleSelectedJob({ label: t('FORM.JOB.ALL'), value: '' })}
-          >
-            {t('FORM.JOB.ALL')}
-          </div>
-          {jobs.length > 1 &&
-            jobs.map((job, index) => {
-              return (
-                <div
-                  className={styles.item}
-                  key={index}
-                  onClick={() => handleSelectedJob(job)}
-                >
-                  {job.label}
-                </div>
-              );
-            })}
-          {jobForm ? (
-            <div className={styles.formItem}>
-              <input
-                className={styles.input}
-                placeholder={t('FORM.JOB.NEW')}
-                onChange={handleInputChange}
-                value={inputValue.label}
-              />
-              <Save className={styles.icon} onClick={handleJobSave} />
-            </div>
-          ) : (
-            <div className={styles.addItem} onClick={() => setJobForm(true)}>
-              <Plus className={styles.icon} />
-              <span>{t('FORM.JOB.ADD')}</span>
-            </div>
-          )}
+      {!noJobsAvailable && (
+        <div
+          className={`${styles.filterBtn} ${
+            selectedJob.value !== '' && styles.active
+          }`}
+          onClick={() => handleDropdown()}
+        >
+          <FilterIcon className={styles.filterIcon} />
         </div>
+      )}
+      {dropdown && (
+        <Dropdown
+          handleSelectedJob={handleSelectedJob}
+          jobForm={jobForm}
+          setJobForm={setJobForm}
+        />
       )}
     </div>
   );

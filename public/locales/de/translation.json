@@ -6,13 +6,14 @@
     "JOB": {
       "LABEL": "Nebentätigkeit",
       "ERROR": "Bitte wähle eine Tätigkeit.",
-      "ALL": "Alle Tätigkeiten",
+      "ALL": "Alle Jobs",
       "NEW": "Neue Tätigkeit",
       "ADD": "Tätigkeit hinzufügen"
     },
     "SOURCE": {
       "LABEL": "Einnahmequelle",
       "ERROR": "Bitte füge eine Einnahmequelle hinzu.",
+      "NEW": "Neue Einnahmequelle",
       "ADD": "Einnahmequelle hinzufügen"
     },
     "AMOUNT": {

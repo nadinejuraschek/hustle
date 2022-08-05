@@ -1,0 +1,78 @@
+.addItem,
+.formItem {
+  font-size: 1.6rem;
+  height: 6rem;
+  padding: 0 1.5rem;
+
+  display: flex;
+  align-items: center;
+}
+
+.addItem {
+  background-color: var(--blue_medium);
+  color: var(--white);
+  cursor: pointer;
+  font-weight: bold;
+
+  gap: 1.5rem;
+}
+
+.addItem:hover {
+  background-color: var(--blue_light);
+  color: var(--blue_dark);
+}
+
+.formItem {
+  justify-content: space-between;
+  gap: 1rem;
+
+  border: none;
+  padding: 0 1rem;
+}
+
+.formItem .icon {
+  stroke: var(--blue_dark);
+}
+
+.input {
+  background-color: var(--blue_lightest);
+  border: none;
+  border-radius: 4px;
+
+  padding: 0 5px;
+
+  height: 4rem;
+  width: 21rem;
+}
+
+.input:active,
+.input:focus {
+  border: 1px solid var(--blue_medium);
+}
+
+.saveBtn {
+  border-radius: 4px;
+  cursor: pointer;
+
+  height: 4rem;
+  width: 4rem;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.saveBtn:hover {
+  background-color: var(--blue_lightest);
+}
+
+.icon {
+  height: 2.8rem;
+  width: 2.8rem;
+}
+
+@media only screen and (min-width: 1280px) {
+  .addItem {
+    display: none;
+  }
+}

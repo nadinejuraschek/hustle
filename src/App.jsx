@@ -1,15 +1,13 @@
 // REACT
-import React, { Suspense } from 'react';
-import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
-
-// COMPONENTS
-import Layout from 'components/Layout';
-import Spinner from 'components/Spinner';
+import React, { Suspense } from 'react';
+import { Route, BrowserRouter as Router, Switch } from 'react-router-dom';
 
 // PAGES
 import Create from 'pages/Create';
 import Dashboard from 'pages/Dashboard';
-import Playground from 'pages/Playground';
+// COMPONENTS
+import Layout from 'components/Layout';
+import Spinner from 'components/Spinner';
 
 const App = () => {
   return (
@@ -25,9 +23,6 @@ const App = () => {
             <Layout>
               <Create />
             </Layout>
-          </Route>
-          <Route exact path='/playground'>
-            <Playground />
           </Route>
         </Switch>
       </Router>

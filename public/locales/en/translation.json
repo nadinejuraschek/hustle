@@ -13,6 +13,7 @@
     "SOURCE": {
       "LABEL": "Source",
       "ERROR": "Please choose a source.",
+      "NEW": "New Income Source",
       "ADD": "Add Income"
     },
     "AMOUNT": {
