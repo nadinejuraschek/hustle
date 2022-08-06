@@ -1,10 +1,7 @@
-import { Chart } from '../Icon';
+import { Chart } from 'components/Icon';
 import LanguageButtons from 'components/LanguageButtons';
-// COMPONENTS
 import { NavLink } from 'react-router-dom';
-// STYLES
 import styles from './sidebar.module.css';
-// TRANSLATION
 import { useTranslation } from 'react-i18next';
 
 const Sidebar = () => {
@@ -17,13 +14,6 @@ const Sidebar = () => {
           <Chart className={styles.icon} />
           {t('NAV.DASHBOARD')}
         </NavLink>
-        {/* <NavLink
-          exact
-          to='/create'
-          activeClassName={styles.active}
-        >
-          {t('NAV.ADD')}
-        </NavLink> */}
       </div>
       <LanguageButtons />
     </div>

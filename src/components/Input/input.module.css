@@ -20,7 +20,8 @@
   left: 1rem;
 }
 
-.field input, .field select {
+.field input,
+.field select {
   background-color: var(--white);
   border: 1px solid var(--blue_light);
   border-radius: 4px;
@@ -31,22 +32,32 @@
   height: 5rem;
 }
 
-.field input:focus, .field input:active {
+.field input:focus,
+.field input:active {
   border: 2px solid var(--blue_medium);
 }
 
 .currencyInput {
   display: flex;
   align-items: center;
-  gap: 1rem;
 }
 
 .currencyInput input {
+  border-radius: 4px 0 0 4px;
   width: 70%;
 }
 
 .currency {
+  border: 1px solid var(--blue_light);
+  border-left: 0;
+  border-radius: 0 4px 4px 0;
   font-size: 1.8rem;
+  height: 5rem;
+  width: 5rem;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .error {

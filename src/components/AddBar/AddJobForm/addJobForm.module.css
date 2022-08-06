@@ -1,0 +1,18 @@
+.addJob {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+.title {
+  color: var(--blue_dark);
+  font-size: 2rem;
+  font-weight: bold;
+  margin-bottom: 1rem;
+
+  width: 100%;
+}
+
+.addJob button {
+  align-self: flex-end;
+}

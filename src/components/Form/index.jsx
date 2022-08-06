@@ -1,28 +1,17 @@
-// REACT
-import { useContext } from 'react';
-
-// DEPENDENCIES
-import { v4 as uuidv4 } from 'uuid';
-import { useForm } from 'react-hook-form';
-import { yupResolver } from '@hookform/resolvers/yup';
 import * as yup from 'yup';
 
-// TRANSLATION
-import { useTranslation } from 'react-i18next';
-
-// CONTEXT
-import { GlobalContext } from 'context/GlobalContext';
-
-// COMPONENTS
-// import Color from 'components/Color';
-import Input from 'components/Input';
 import Button from 'components/Button';
-
-// STYLES
+import { GlobalContext } from 'context/GlobalContext';
+import Input from 'components/Input';
 import styles from './form.module.css';
+import { useContext } from 'react';
+import { useForm } from 'react-hook-form';
+import { useTranslation } from 'react-i18next';
+import { v4 as uuidv4 } from 'uuid';
+import { yupResolver } from '@hookform/resolvers/yup';
 
 // HELPER
-export const normalizeNumber = (value) => {
+export const normalizeNumber = value => {
   return value.match('^[0-9][0-9.]*$');
 };
 
@@ -32,23 +21,16 @@ const Form = () => {
 
   // SCHEMA VALIDATION
   const schema = yup.object().shape({
-    id: yup
-      .number(),
-    job: yup
-      .string()
-      .required(t('FORM.JOB.ERROR')),
-    source: yup
-      .string()
-      .required(t('FORM.SOURCE.ERROR')),
+    id: yup.number(),
+    job: yup.string().required(t('FORM.JOB.ERROR')),
+    source: yup.string().required(t('FORM.SOURCE.ERROR')),
     amount: yup
       .string()
       .required(t('FORM.AMOUNT.ERROR'))
-      .min(1,t('FORM.AMOUNT.ERROR')),
+      .min(1, t('FORM.AMOUNT.ERROR')),
     // color: yup
     //   .string(),
-    timestamp: yup
-      .date()
-      .default(() => (new Date())),
+    timestamp: yup.date().default(() => new Date()),
   });
 
   const { register, handleSubmit, errors, formState } = useForm({
@@ -61,11 +43,10 @@ const Form = () => {
       timestamp: new Date(),
     },
     resolver: yupResolver(schema),
-    mode: "onChange",
+    mode: 'onChange',
   });
 
   const formSubmit = formData => {
-    // console.log(formData);
     addTransaction(formData);
   };
 
@@ -96,8 +77,8 @@ const Form = () => {
         label={t('FORM.AMOUNT.LABEL')}
         name='amount'
         formRef={register}
-        handleChange={(event) => {
-          const { value } = event.target;
+        handleChange={event => {
+          const { value } = event.target;
           event.target.value = normalizeNumber(value);
         }}
         type='number'

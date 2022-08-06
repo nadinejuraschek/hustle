@@ -8,13 +8,13 @@
       "ERROR": "Bitte wähle eine Tätigkeit.",
       "ALL": "Alle Jobs",
       "NEW": "Neue Tätigkeit",
-      "ADD": "Tätigkeit hinzufügen"
+      "ADD": "Neue Tätigkeit"
     },
     "SOURCE": {
       "LABEL": "Einnahmequelle",
       "ERROR": "Bitte füge eine Einnahmequelle hinzu.",
       "NEW": "Neue Einnahmequelle",
-      "ADD": "Einnahmequelle hinzufügen"
+      "ADD": "Neue Einnahmequelle"
     },
     "AMOUNT": {
       "LABEL": "Betrag",

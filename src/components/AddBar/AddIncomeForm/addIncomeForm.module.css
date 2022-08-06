@@ -1,0 +1,18 @@
+.title {
+  color: var(--blue_dark);
+  font-size: 2rem;
+  font-weight: bold;
+  margin-bottom: 1rem;
+}
+
+.addIncome {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+
+  border-bottom: 1px solid var(--grey_medium);
+}
+
+.addIncome button {
+  align-self: flex-end;
+}
