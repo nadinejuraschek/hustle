@@ -5,20 +5,18 @@ import Dashboard from 'pages/Dashboard';
 import Layout from 'components/Layout';
 import Spinner from 'components/Spinner';
 
-const App = () => {
-  return (
-    <Suspense fallback={<Spinner fullScreen />}>
-      <Router>
-        <Switch>
-          <Route exact path='/'>
-            <Layout>
-              <Dashboard />
-            </Layout>
-          </Route>
-        </Switch>
-      </Router>
-    </Suspense>
-  );
-};
+const App = () => (
+  <Suspense fallback={<Spinner fullScreen />}>
+    <Router>
+      <Switch>
+        <Route exact path='/'>
+          <Layout>
+            <Dashboard />
+          </Layout>
+        </Route>
+      </Switch>
+    </Router>
+  </Suspense>
+);
 
 export default App;

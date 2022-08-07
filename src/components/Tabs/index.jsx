@@ -1,8 +1,5 @@
-// REACT
-import { useState } from 'react';
-
-// STYLES
 import styles from './tabs.module.css';
+import { useState } from 'react';
 
 const Tabs = ({ tabs, handleClick }) => {
   const [tab, setTab] = useState(0);

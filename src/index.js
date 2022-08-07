@@ -1,18 +1,10 @@
-// REACT
-import React from 'react';
-import ReactDOM from 'react-dom';
-
-// STYLES
 import './index.css';
-
-// COMPONENTS
-import App from './App';
-
-// TRANSLATION
 import './i18n';
 
-// CONTEXT
+import App from './App';
 import { GlobalContextProvider } from 'context/GlobalContext';
+import React from 'react';
+import ReactDOM from 'react-dom';
 
 ReactDOM.render(
   <React.StrictMode>

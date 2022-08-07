@@ -1,25 +1,46 @@
-// REACT
 import { createContext, useEffect, useReducer, useState } from 'react';
 
-// REDUCERS
 import { AppReducer } from 'reducers/AppReducer';
 
 const initialState = {
   jobs: [
-    { label: "Babysitten", value: 'babysitten', income: 0 },
-    { label: "Nachhilfe", value: 'nachhilfe', income: 0  },
-    { label: "Kleiderverkauf", value: 'kleiderverkauf', income: 0 },
-    { label: "Tanzstunden", value: 'tanzstunden', income: 0 },
-    // { label: "Minijob", value: 'minijob' },
+    { label: 'Babysit', value: 'babysit', income: 0 },
+    { label: 'Tutoring', value: 'tutoring', income: 0 },
+    { label: 'Clothing Sales', value: 'clothingsales', income: 0 },
+    { label: 'Dance Classes', value: 'danceclasses', income: 0 },
   ],
   transactions: [
-    { job: 'babysitten', source: 'Familie Müller', amount: 30, timestamp: 1606999499 },
-    { job: 'babysitten', source: 'Familie Bauer', amount: 50, timestamp: 1606826699 },
-    { job: 'kleiderverkauf', source: 'Vinted', amount: 22, timestamp: 1606826699 },
-    { job: 'kleiderverkauf', source: 'eBay', amount: 8, timestamp: 1605876299 },
-    { job: 'tanzstunden', source: 'TV Baienfurt', amount: 64, timestamp: 1606221899 },
-    // { job: 'minijob', source: 'GEW', amount: 120, timestamp: 1606394699 },
-    { job: 'nachhilfe', source: 'Familie Berg', amount: 10, timestamp: 1606481099 },
+    {
+      job: 'babysit',
+      source: 'Mueller Family',
+      amount: 30,
+      timestamp: 1606999499,
+    },
+    {
+      job: 'babysit',
+      source: 'Bauer Family',
+      amount: 50,
+      timestamp: 1606826699,
+    },
+    {
+      job: 'clothingsales',
+      source: 'Vinted',
+      amount: 22,
+      timestamp: 1606826699,
+    },
+    { job: 'clothingsales', source: 'eBay', amount: 8, timestamp: 1605876299 },
+    {
+      job: 'danceclasses',
+      source: 'TV Baienfurt',
+      amount: 64,
+      timestamp: 1606221899,
+    },
+    {
+      job: 'tutoring',
+      source: 'Berg Family',
+      amount: 10,
+      timestamp: 1606481099,
+    },
   ],
 };
 
@@ -31,15 +52,15 @@ export const GlobalContextProvider = ({ children }) => {
 
   const addJob = job => {
     dispatch({
-      type: "ADD_JOB",
-      payload: job
+      type: 'ADD_JOB',
+      payload: job,
     });
   };
 
   const addTransaction = transaction => {
     dispatch({
-      type: "ADD_TRANSACTION",
-      payload: transaction
+      type: 'ADD_TRANSACTION',
+      payload: transaction,
     });
   };
 
@@ -55,11 +76,11 @@ export const GlobalContextProvider = ({ children }) => {
       let total = 0;
       // loop over transactions
       // find all matching transactions
-      const sortedTransactions = transactions.filter(transaction => transaction.job === name);
+      const sortedTransactions = transactions.filter(
+        transaction => transaction.job === name
+      );
       // loop over matching transactions to add incomes
-      sortedTransactions.map(item => {
-        total = total + item.amount
-      });
+      sortedTransactions.map(item => (total = total + item.amount));
       // create array entry
       // push to array
       return graphIncomes.push(total);
@@ -68,16 +89,18 @@ export const GlobalContextProvider = ({ children }) => {
   }, [state]);
 
   return (
-    <GlobalContext.Provider value={{
-      jobs: state.jobs,
-      transactions: state.transactions.sort((x, y) => {
-        return x.timestamp - y.timestamp;
-      }),
-      incomeList,
-      addTransaction,
-      addJob,
-    }}>
-      { children }
+    <GlobalContext.Provider
+      value={{
+        jobs: state.jobs,
+        transactions: state.transactions.sort((x, y) => {
+          return x.timestamp - y.timestamp;
+        }),
+        incomeList,
+        addTransaction,
+        addJob,
+      }}
+    >
+      {children}
     </GlobalContext.Provider>
   );
 };
