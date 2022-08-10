@@ -3,14 +3,14 @@ import './i18n';
 
 import App from './App';
 import { GlobalContextProvider } from 'context/GlobalContext';
-import React from 'react';
-import ReactDOM from 'react-dom';
+import { createRoot } from 'react-dom/client';
 
-ReactDOM.render(
-  <React.StrictMode>
-    <GlobalContextProvider>
-      <App />
-    </GlobalContextProvider>
-  </React.StrictMode>,
-  document.getElementById('root')
+const container = document.getElementById('root');
+const root = createRoot(container);
+
+createRoot(container);
+root.render(
+  <GlobalContextProvider>
+    <App />
+  </GlobalContextProvider>
 );
