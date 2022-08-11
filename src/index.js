@@ -8,7 +8,6 @@ import { createRoot } from 'react-dom/client';
 const container = document.getElementById('root');
 const root = createRoot(container);
 
-createRoot(container);
 root.render(
   <GlobalContextProvider>
     <App />

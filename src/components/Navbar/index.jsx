@@ -23,7 +23,6 @@ const Navbar = () => {
         <div className={styles.sidenav}>
           <div className={styles.links}>
             <NavLink
-              exact
               to='/'
               activeclassname={styles.active}
               onClick={() => setOpenNav(false)}
