@@ -1,8 +1,17 @@
+import {
+  GlobalProviderProps,
+  GlobalState,
+  Job,
+  ReducerActions,
+  Transaction,
+} from './types';
 import { createContext, useEffect, useReducer, useState } from 'react';
 
 import { AppReducer } from 'reducers/AppReducer';
 
 const initialState = {
+  addTransaction: (data: {}) => {},
+  incomeList: [],
   jobs: [
     { label: 'Babysit', value: 'babysit', income: 0 },
     { label: 'Tutoring', value: 'tutoring', income: 0 },
@@ -46,18 +55,22 @@ const initialState = {
 
 export const GlobalContext = createContext(initialState);
 
-export const GlobalContextProvider = ({ children }) => {
-  const [state, dispatch] = useReducer(AppReducer, initialState);
-  const [incomeList, setIncomeList] = useState([]);
+export const GlobalContextProvider = ({
+  children,
+}: GlobalProviderProps): JSX.Element => {
+  const [state, dispatch] = useReducer<
+    (arg1: GlobalState, actions: ReducerActions) => GlobalState
+  >(AppReducer, initialState);
+  const [incomeList, setIncomeList] = useState<number[]>([]);
 
-  const addJob = job => {
+  const addJob = (job: Job): void => {
     dispatch({
       type: 'ADD_JOB',
       payload: job,
     });
   };
 
-  const addTransaction = transaction => {
+  const addTransaction = (transaction: Transaction): void => {
     dispatch({
       type: 'ADD_TRANSACTION',
       payload: transaction,
@@ -66,8 +79,8 @@ export const GlobalContextProvider = ({ children }) => {
 
   // DISPLAY TOTAL INCOMES
   useEffect(() => {
-    const jobs = state.jobs;
-    const transactions = state.transactions;
+    const jobs = (state as GlobalState).jobs;
+    const transactions = (state as GlobalState).transactions;
 
     let graphIncomes = [];
     // loop over jobs
@@ -77,7 +90,7 @@ export const GlobalContextProvider = ({ children }) => {
       // loop over transactions
       // find all matching transactions
       const sortedTransactions = transactions.filter(
-        transaction => transaction.job === name
+        (transaction: Transaction): boolean => transaction.job === name
       );
       // loop over matching transactions to add incomes
       sortedTransactions.map(item => (total = total + item.amount));
@@ -88,19 +101,17 @@ export const GlobalContextProvider = ({ children }) => {
     setIncomeList(graphIncomes);
   }, [state]);
 
+  const value = {
+    jobs: (state as GlobalState).jobs,
+    transactions: (state as GlobalState).transactions.sort((x, y): number => {
+      return x.timestamp - y.timestamp;
+    }),
+    incomeList,
+    addTransaction,
+    addJob,
+  };
+
   return (
-    <GlobalContext.Provider
-      value={{
-        jobs: state.jobs,
-        transactions: state.transactions.sort((x, y) => {
-          return x.timestamp - y.timestamp;
-        }),
-        incomeList,
-        addTransaction,
-        addJob,
-      }}
-    >
-      {children}
-    </GlobalContext.Provider>
+    <GlobalContext.Provider value={value}>{children}</GlobalContext.Provider>
   );
 };

@@ -1,7 +1,10 @@
+import { InputProps } from './types';
+import { LegacyRef } from 'react';
 import styles from './input.module.css';
 
 const Input = ({
-  currency,
+  className = '',
+  currency = false,
   error,
   formRef,
   handleChange,
@@ -9,31 +12,38 @@ const Input = ({
   name,
   options,
   placeholder,
-  selecter,
-  type,
-}) => {
+  selecter = false,
+  type = 'text',
+}: InputProps): JSX.Element => {
   const selectField = (
-    <select name={name} ref={formRef}>
+    <select
+      className={className}
+      name={name}
+      ref={formRef as LegacyRef<HTMLSelectElement>}
+    >
       {options &&
-        options.map((option, index) => (
-          <option key={index} value={option.value}>
-            {option.label}
-          </option>
-        ))}
+        options.map(
+          (option, index): JSX.Element => (
+            <option key={index} value={option.value}>
+              {option.label}
+            </option>
+          )
+        )}
     </select>
   );
 
   const currencyField = (
     <div className={styles.currencyInput}>
       <input
-        onChange={handleChange}
+        className={className}
         max='10000.00'
         min='0.00'
         name={name}
+        onChange={handleChange}
         placeholder={placeholder}
+        ref={formRef as LegacyRef<HTMLInputElement>}
         step='0.01'
         type={type}
-        ref={formRef}
       />
       <span className={styles.currency}>€</span>
     </div>
@@ -41,11 +51,12 @@ const Input = ({
 
   const inputField = (
     <input
-      onChange={handleChange}
+      className={className}
       name={name}
+      onChange={handleChange}
       placeholder={placeholder}
+      ref={formRef as LegacyRef<HTMLInputElement>}
       type={type}
-      ref={formRef}
     />
   );
 

@@ -1,6 +1,7 @@
+import { SpinnerProps } from './types';
 import styles from './spinner.module.css';
 
-const Spinner = ({ fullScreen }) => (
+const Spinner = ({ fullScreen }: SpinnerProps): JSX.Element => (
   <>
     {fullScreen ? (
       <div className={styles.full}>

@@ -3,10 +3,10 @@ import { ReactComponent as EN } from 'assets/icons/en.svg';
 import styles from './lang.module.css';
 import { useTranslation } from 'react-i18next';
 
-const LangBtn = () => {
+const LangBtn = (): JSX.Element => {
   const { i18n } = useTranslation();
 
-  const changeLanguage = lng => {
+  const changeLanguage = (lng: string): void => {
     i18n.changeLanguage(lng);
   };
 

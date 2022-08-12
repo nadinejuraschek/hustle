@@ -1,7 +1,8 @@
 import { ReactComponent as Close } from 'assets/icons/close.svg';
+import { ModalProps } from './types';
 import styles from './modal.module.css';
 
-const Modal = ({ children, handleCancel, title }) => (
+const Modal = ({ children, handleCancel, title }: ModalProps): JSX.Element => (
   <div className={styles.overlay}>
     <div className={styles.modal}>
       <Close className={styles.close} onClick={handleCancel} />

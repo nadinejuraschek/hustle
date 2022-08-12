@@ -1,23 +1,20 @@
 import * as yup from 'yup';
 
+import { ChangeEvent, useContext } from 'react';
+
 import Button from 'components/Button';
 import { GlobalContext } from 'context/GlobalContext';
 import Input from 'components/Input';
+import { normalizeNumber } from 'helpers';
 import styles from './form.module.css';
-import { useContext } from 'react';
 import { useForm } from 'react-hook-form';
 import { useTranslation } from 'react-i18next';
 import { v4 as uuidv4 } from 'uuid';
 import { yupResolver } from '@hookform/resolvers/yup';
 
-// HELPER
-export const normalizeNumber = value => {
-  return value.match('^[0-9][0-9.]*$');
-};
-
-const Form = () => {
+const Form = (): JSX.Element => {
   const { t } = useTranslation();
-  const { jobs, addTransaction } = useContext(GlobalContext);
+  const { addTransaction, jobs } = useContext(GlobalContext);
 
   // SCHEMA VALIDATION
   const schema = yup.object().shape({
@@ -46,14 +43,19 @@ const Form = () => {
     mode: 'onChange',
   });
 
-  const formSubmit = formData => {
+  const handleCurrency = (event: ChangeEvent): void => {
+    const target = event.target as HTMLInputElement;
+    target.value = normalizeNumber(target.value);
+  };
+
+  const formSubmit = (formData: any): void => {
     addTransaction(formData);
   };
 
   return (
     <form
-      className={styles.form}
       autoComplete='off'
+      className={styles.form}
       onSubmit={handleSubmit(formSubmit)}
     >
       <Input
@@ -77,10 +79,7 @@ const Form = () => {
         label={t('FORM.AMOUNT.LABEL')}
         name='amount'
         formRef={register}
-        handleChange={event => {
-          const { value } = event.target;
-          event.target.value = normalizeNumber(value);
-        }}
+        handleChange={handleCurrency}
         type='number'
       />
       {/* <Color
@@ -90,8 +89,8 @@ const Form = () => {
       /> */}
       <Button
         label={t('FORM.SUBMIT')}
-        type='submit'
         disabled={!formState.isValid}
+        type='submit'
       />
     </form>
   );

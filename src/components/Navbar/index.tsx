@@ -6,7 +6,7 @@ import styles from './nav.module.css';
 import { useState } from 'react';
 import { useTranslation } from 'react-i18next';
 
-const Navbar = () => {
+const Navbar = (): JSX.Element => {
   const { t } = useTranslation();
   const [openNav, setOpenNav] = useState(false);
 
@@ -23,12 +23,15 @@ const Navbar = () => {
         <div className={styles.sidenav}>
           <div className={styles.links}>
             <NavLink
-              to='/'
+              // @ts-ignore
               activeclassname={styles.active}
               onClick={() => setOpenNav(false)}
+              to='/'
             >
-              <Chart className={styles.icon} />
-              {t('NAV.DASHBOARD')}
+              <>
+                <Chart className={styles.icon} />
+                {t('NAV.DASHBOARD')}
+              </>
             </NavLink>
           </div>
           <LanguageButtons />

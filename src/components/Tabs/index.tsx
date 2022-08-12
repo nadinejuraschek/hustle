@@ -1,13 +1,15 @@
+import { Tab, TabsProps } from './types';
+
 import styles from './tabs.module.css';
 import { useState } from 'react';
 
-const Tabs = ({ tabs, handleClick }) => {
+const Tabs = ({ handleClick, tabs }: TabsProps): JSX.Element => {
   const [tab, setTab] = useState(0);
 
   return (
     <div className={styles.tabs}>
-      {tabs.map((item, index) => {
-        return (
+      {tabs.map(
+        (item: Tab, index: number): JSX.Element => (
           <div
             className={`${styles.tab} ${index === tab ? styles.active : ''}`}
             key={index}
@@ -18,8 +20,8 @@ const Tabs = ({ tabs, handleClick }) => {
           >
             {item.label}
           </div>
-        );
-      })}
+        )
+      )}
     </div>
   );
 };
