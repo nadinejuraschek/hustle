@@ -45,7 +45,8 @@ const Form = (): JSX.Element => {
 
   const handleCurrency = (event: ChangeEvent): void => {
     const target = event.target as HTMLInputElement;
-    target.value = normalizeNumber(target.value);
+    const normalised = normalizeNumber(target.value);
+    target.value = normalised[0];
   };
 
   const formSubmit = (formData: any): void => {
