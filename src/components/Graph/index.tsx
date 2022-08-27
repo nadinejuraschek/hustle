@@ -1,3 +1,10 @@
+import {
+  ArcElement,
+  BarElement,
+  CategoryScale,
+  Chart as ChartJS,
+  LinearScale,
+} from 'chart.js';
 import { GraphData, GraphProps } from './types';
 import { useContext, useEffect, useState } from 'react';
 
@@ -9,6 +16,8 @@ import { Tab } from '../Tabs/types';
 import Tabs from 'components/Tabs';
 import styles from './graph.module.css';
 import { useTranslation } from 'react-i18next';
+
+ChartJS.register(ArcElement, BarElement, CategoryScale, LinearScale);
 
 const Graph = ({ list }: GraphProps): JSX.Element => {
   const { t } = useTranslation();
@@ -46,6 +55,14 @@ const Graph = ({ list }: GraphProps): JSX.Element => {
         label: 'Income',
         data: incomeList,
         backgroundColor: [
+          `#FD957980`,
+          `#219ad380`,
+          `#86cc6a80`,
+          `#59286e80`,
+          `#fcf15c80`,
+        ],
+        borderColor: ['#FD9579', '#219ad3', '#86cc6a', '#59286e', '#fcf15c'],
+        hoverBackgroundColor: [
           '#FD9579',
           '#219ad3',
           '#86cc6a',
