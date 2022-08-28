@@ -1,0 +1,60 @@
+.pickerWrapper {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1.5rem;
+
+  position: relative;
+
+  background-color: var(--white);
+  border: 1px solid var(--blue_light);
+  border-radius: 4px;
+  color: var(--blue_dark);
+  font-size: 1.6rem;
+  padding: 0 1rem;
+
+  height: 5rem;
+}
+
+.label {
+  background-color: var(--white);
+  border-radius: 4px;
+  color: var(--blue_medium);
+  font-size: 1.4rem;
+  font-weight: bold;
+  padding: 0 8px;
+  text-transform: uppercase;
+
+  position: absolute;
+  top: -5px;
+  left: 1rem;
+
+  z-index: 10;
+}
+
+.pickerWrapper button {
+  height: 5rem;
+  width: 100%;
+
+  border-radius: 4px;
+  box-shadow: none;
+  margin: 0;
+
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+.pickerWrapper button span:first-child {
+  height: 100%;
+  width: 100%;
+}
+
+.pickerWrapper button span:first-child div {
+  height: 100%;
+  width: 100%;
+}
+
+.pickerWrapper input {
+  display: none;
+}

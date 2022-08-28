@@ -6,51 +6,16 @@ import {
   Transaction,
 } from './types';
 import { createContext, useEffect, useReducer, useState } from 'react';
+import { jobs, transactions } from 'data';
 
 import { AppReducer } from 'reducers/AppReducer';
 
 const initialState = {
+  addJob: (data: {}) => {},
   addTransaction: (data: {}) => {},
   incomeList: [],
-  jobs: [
-    { label: 'Babysit', value: 'babysit', income: 0 },
-    { label: 'Tutoring', value: 'tutoring', income: 0 },
-    { label: 'Clothing Sales', value: 'clothingsales', income: 0 },
-    { label: 'Dance Classes', value: 'danceclasses', income: 0 },
-  ],
-  transactions: [
-    {
-      job: 'babysit',
-      source: 'Mueller Family',
-      amount: 30,
-      timestamp: 1606999499,
-    },
-    {
-      job: 'babysit',
-      source: 'Bauer Family',
-      amount: 50,
-      timestamp: 1606826699,
-    },
-    {
-      job: 'clothingsales',
-      source: 'Vinted',
-      amount: 22,
-      timestamp: 1606826699,
-    },
-    { job: 'clothingsales', source: 'eBay', amount: 8, timestamp: 1605876299 },
-    {
-      job: 'danceclasses',
-      source: 'TV Baienfurt',
-      amount: 64,
-      timestamp: 1606221899,
-    },
-    {
-      job: 'tutoring',
-      source: 'Berg Family',
-      amount: 10,
-      timestamp: 1606481099,
-    },
-  ],
+  jobs,
+  transactions,
 };
 
 export const GlobalContext = createContext(initialState);
@@ -93,7 +58,14 @@ export const GlobalContextProvider = ({
         (transaction: Transaction): boolean => transaction.job === name
       );
       // loop over matching transactions to add incomes
-      sortedTransactions.map(item => (total = total + item.amount));
+      sortedTransactions.map(item => {
+        console.log('item: ', item);
+        console.log('amount: ', typeof item.amount);
+        if (typeof item.amount === 'string') {
+          return (total = total + Number(item.amount));
+        }
+        return (total = total + item.amount);
+      });
       // create array entry
       // push to array
       return graphIncomes.push(total);

@@ -1,25 +1,39 @@
-import { ChangeEvent, MouseEvent, useState } from 'react';
+import { ChangeEvent, MouseEvent, useContext, useState } from 'react';
 
 import Button from 'components/Button';
+import ColorPicker from 'components/ColorPicker';
+import { GlobalContext } from 'context/GlobalContext';
 import Input from 'components/Input';
 import styles from './addJobForm.module.css';
 import { useTranslation } from 'react-i18next';
+import { Job } from 'context/types';
 
 const AddJobForm = (): JSX.Element => {
   const { t } = useTranslation();
 
-  const [inputValue, setInputValue] = useState('');
+  const { addJob, jobs } = useContext(GlobalContext);
 
-  const handleInputChange = (event: ChangeEvent): void => {
+  const [jobValue, setJobValue] = useState('');
+  const [colorValue, setColorValue] = useState('');
+
+  const handleJobChange = (event: ChangeEvent): void => {
     const value = (event.target as HTMLInputElement).value;
-    setInputValue(value);
+    setJobValue(value);
   };
 
   const handleJobSave = (event: MouseEvent): void => {
     event.preventDefault();
-    const data = { label: inputValue, value: inputValue.toLowerCase() };
-    console.log('job data ', data);
-    // addJob(data);
+    const data = {
+      color: colorValue,
+      label: jobValue,
+      value: jobValue.toLowerCase().replace(/\s/g, ''),
+    };
+
+    const jobAlreadyAdded = jobs.find(
+      (job: Job): boolean => job.label === jobValue
+    );
+
+    if (!jobAlreadyAdded) addJob(data);
   };
 
   return (
@@ -27,11 +41,16 @@ const AddJobForm = (): JSX.Element => {
       <h2 className={styles.title}>{t('FORM.JOB.ADD') as string}</h2>
       <Input
         className={styles.input}
-        handleChange={handleInputChange}
+        handleChange={handleJobChange}
         label={t('FORM.JOB.LABEL')}
         placeholder={t('FORM.JOB.NEW')}
         type='text'
-        value={inputValue}
+        value={jobValue}
+      />
+      <ColorPicker
+        handleChange={setColorValue}
+        label={t('FORM.COLOR.LABEL')}
+        value={colorValue}
       />
       <Button label={t('FORM.SUBMIT')} onClick={handleJobSave} />
     </div>
