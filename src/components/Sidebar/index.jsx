@@ -10,7 +10,7 @@ const Sidebar = () => {
   return (
     <div className={styles.sidebar}>
       <div className={styles.links}>
-        <NavLink exact to='/' activeClassName={styles.active}>
+        <NavLink exact to='/' activeclassname={styles.active}>
           <Chart className={styles.icon} />
           {t('NAV.DASHBOARD')}
         </NavLink>

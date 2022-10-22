@@ -25,7 +25,7 @@ const Navbar = () => {
             <NavLink
               exact
               to='/'
-              activeClassName={styles.active}
+              activeclassname={styles.active}
               onClick={() => setOpenNav(false)}
             >
               <Chart className={styles.icon} />
