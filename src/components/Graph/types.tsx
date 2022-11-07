@@ -14,7 +14,11 @@ export type GraphData = {
 };
 
 export type GraphDataset = {
-  backgroundColor: string[];
+  backgroundColor?: string[];
+  borderColor?: string[];
+  borderWidth?: number;
   data: string[];
+  hoverBackgroundColor?: string[];
+  hoverBorderWidth?: number;
   label: 'Income';
 };

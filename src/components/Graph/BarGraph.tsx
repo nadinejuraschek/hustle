@@ -1,37 +1,36 @@
 import { Bar } from 'react-chartjs-2';
 import { GraphTypeProps } from './types';
 
-const BarGraph = ({ data }: GraphTypeProps): JSX.Element => (
-  <Bar
-    data={data}
-    options={{
-      responsive: true,
-      maintainAspectRatio: false,
-      legend: {
-        display: false,
-      },
-      scales: {
-        xAxes: [
-          {
-            ticks: { display: true },
-            gridLines: {
-              display: false,
-              drawBorder: false,
-            },
+const BarGraph = ({ data }: GraphTypeProps): JSX.Element => {
+  data.datasets[0] = {
+    ...data.datasets[0],
+    borderWidth: 2,
+    hoverBorderWidth: 2,
+  };
+
+  return (
+    <Bar
+      data={data}
+      options={{
+        responsive: true,
+        maintainAspectRatio: false,
+        plugins: {
+          legend: {
+            display: false,
           },
-        ],
-        yAxes: [
-          {
+        },
+        scales: {
+          x: {
+            grid: { display: false },
             ticks: { display: true },
-            gridLines: {
-              display: true,
-              drawBorder: true,
-            },
           },
-        ],
-      },
-    }}
-  />
-);
+          y: {
+            ticks: { display: true },
+          },
+        },
+      }}
+    />
+  );
+};
 
 export default BarGraph;
