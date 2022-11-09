@@ -28,25 +28,8 @@ const Graph = ({ list }: GraphProps): JSX.Element => {
   const { jobs, incomeList } = useContext(GlobalContext);
 
   const labels = jobs.map((job: Job): string => job.label);
-
-  // // DISPLAY TOTAL INCOME
-  // useEffect(() => {
-  //   // loop over jobs
-  //   jobs.map(job => {
-  //     const name = job.value;
-  //     let total = 0;
-  //     // loop over transactions
-  //     // find all matching transactions
-  //     const sortedTransactions = list.filter(transaction => transaction.job === name);
-  //     // loop over matching transactions to add incomes
-  //     sortedTransactions.map(item => {
-  //       total = total + item.amount
-  //     });
-  //     // create array entry
-  //     // push to array
-  //     return graphIncomes.push(total);
-  //   });
-  // }, [jobs, list]);
+  const colors = jobs.map((job: Job): string => job.color);
+  const transparentColors = jobs.map((job: Job): string => `${job.color}80`);
 
   const data: GraphData = {
     labels: labels,
@@ -54,21 +37,9 @@ const Graph = ({ list }: GraphProps): JSX.Element => {
       {
         label: 'Income',
         data: incomeList,
-        backgroundColor: [
-          `#FD957980`,
-          `#219ad380`,
-          `#86cc6a80`,
-          `#59286e80`,
-          `#fcf15c80`,
-        ],
-        borderColor: ['#FD9579', '#219ad3', '#86cc6a', '#59286e', '#fcf15c'],
-        hoverBackgroundColor: [
-          '#FD9579',
-          '#219ad3',
-          '#86cc6a',
-          '#59286e',
-          '#fcf15c',
-        ],
+        backgroundColor: transparentColors,
+        borderColor: colors,
+        hoverBackgroundColor: colors,
       },
     ],
   };
@@ -83,6 +54,8 @@ const Graph = ({ list }: GraphProps): JSX.Element => {
     });
     setBalance(parseFloat((Math.round(total * 1 * 100) / 100).toFixed(2)));
   }, [list]);
+
+  console.log('jobs: ', labels);
 
   return (
     <div className={styles.container}>

@@ -1,6 +1,6 @@
 import { GlobalContext } from 'context/GlobalContext';
 import styles from './listItem.module.css';
-import { useContext } from 'react';
+import { useContext, useMemo } from 'react';
 
 const ListItem = ({ item }) => {
   const { job, source, amount } = item;
@@ -8,14 +8,21 @@ const ListItem = ({ item }) => {
 
   const { jobs } = useContext(GlobalContext);
 
-  const getJobLabel = () => {
-    return jobs.find(item => item.value === job).label;
-  };
+  const jobDetails = useMemo(
+    () => jobs.find(item => item.value === job),
+    [job, jobs]
+  );
 
   return (
-    <div className={styles.listItem}>
+    <div
+      className={styles.listItem}
+      style={{
+        backgroundColor: `${jobDetails.color}08`,
+        borderLeft: `6px solid ${jobDetails.color}`,
+      }}
+    >
       <div className={styles.details}>
-        <div className={styles.job}>{getJobLabel()}</div>
+        <div className={styles.job}>{jobDetails.label}</div>
         <div className={styles.source}>{source}</div>
       </div>
       <div

@@ -1,11 +1,10 @@
 import * as yup from 'yup';
 
-import { ChangeEvent, useContext } from 'react';
+import { useContext } from 'react';
 
 import Button from 'components/Button';
 import { GlobalContext } from 'context/GlobalContext';
 import Input from 'components/Input';
-import { normalizeNumber } from 'helpers';
 import styles from './form.module.css';
 import { useForm } from 'react-hook-form';
 import { useTranslation } from 'react-i18next';
@@ -22,11 +21,9 @@ const Form = (): JSX.Element => {
     job: yup.string().required(t('FORM.JOB.ERROR')),
     source: yup.string().required(t('FORM.SOURCE.ERROR')),
     amount: yup
-      .string()
+      .number()
       .required(t('FORM.AMOUNT.ERROR'))
       .min(1, t('FORM.AMOUNT.ERROR')),
-    // color: yup
-    //   .string(),
     timestamp: yup.date().default(() => new Date()),
   });
 
@@ -36,18 +33,11 @@ const Form = (): JSX.Element => {
       job: '',
       source: '',
       amount: 0,
-      // color: '#FF8562',
       timestamp: new Date(),
     },
     resolver: yupResolver(schema),
     mode: 'onChange',
   });
-
-  const handleCurrency = (event: ChangeEvent): void => {
-    const target = event.target as HTMLInputElement;
-    const normalised = normalizeNumber(target.value);
-    target.value = normalised[0];
-  };
 
   const formSubmit = (formData: any): void => {
     addTransaction(formData);
@@ -80,14 +70,8 @@ const Form = (): JSX.Element => {
         label={t('FORM.AMOUNT.LABEL')}
         name='amount'
         formRef={register}
-        handleChange={handleCurrency}
         type='number'
       />
-      {/* <Color
-        formRef={register}
-        label="Color"
-        name="color"
-      /> */}
       <Button
         label={t('FORM.SUBMIT')}
         disabled={!formState.isValid}

@@ -8,12 +8,14 @@ export const AppReducer = (
     case 'ADD_TRANSACTION':
       return {
         ...state,
-        transactions: [action.payload as Transaction, ...state.transactions],
+        transactions: [...state.transactions, action.payload as Transaction],
       };
     case 'ADD_JOB':
+      console.log('ADD_JOB payload: ', action.payload);
+      console.log('ADD_JOB state: ', state);
       return {
         ...state,
-        jobs: [action.payload as Job, ...state.jobs],
+        jobs: [...state.jobs, action.payload as Job],
       };
     default:
       return state;

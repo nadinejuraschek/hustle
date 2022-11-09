@@ -1,4 +1,5 @@
 export type Job = {
+  color: string;
   income: number;
   label: string;
   value: string;

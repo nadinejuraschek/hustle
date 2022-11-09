@@ -17,6 +17,7 @@ const Filter = ({ handleList }: FilterProps): JSX.Element => {
   const [jobForm, setJobForm] = useState(false);
   const [dropdown, setDropdown] = useState(false);
   const [selectedJob, setSelectedJob] = useState({
+    color: '',
     label: t('FORM.JOB.ALL'),
     value: '',
     income: 0,
