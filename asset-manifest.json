@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "/hustle/static/css/main.0afa0ec1.css",
-    "main.js": "/hustle/static/js/main.0213ff9a.js",
+    "main.js": "/hustle/static/js/main.b447529b.js",
     "static/media/en.svg": "/hustle/static/media/en.35e6c47cb1764cea3bba34b229665f11.svg",
     "index.html": "/hustle/index.html",
     "static/media/getFetch.cjs": "/hustle/static/media/getFetch.40f37ddea2378391108f.cjs",
@@ -12,10 +12,10 @@
     "static/media/close.svg": "/hustle/static/media/close.df559c542a5e6579e0761ba74e9fd1b6.svg",
     "static/media/de.svg": "/hustle/static/media/de.28476fb818fa19fda952e98d280c0e62.svg",
     "main.0afa0ec1.css.map": "/hustle/static/css/main.0afa0ec1.css.map",
-    "main.0213ff9a.js.map": "/hustle/static/js/main.0213ff9a.js.map"
+    "main.b447529b.js.map": "/hustle/static/js/main.b447529b.js.map"
   },
   "entrypoints": [
     "static/css/main.0afa0ec1.css",
-    "static/js/main.0213ff9a.js"
+    "static/js/main.b447529b.js"
   ]
 }
