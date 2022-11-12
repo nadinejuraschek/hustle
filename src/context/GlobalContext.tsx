@@ -59,8 +59,6 @@ export const GlobalContextProvider = ({
       );
       // loop over matching transactions to add incomes
       sortedTransactions.map(item => {
-        console.log('item: ', item);
-        console.log('amount: ', typeof item.amount);
         if (typeof item.amount === 'string') {
           return (total = total + Number(item.amount));
         }

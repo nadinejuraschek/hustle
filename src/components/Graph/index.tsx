@@ -55,8 +55,6 @@ const Graph = ({ list }: GraphProps): JSX.Element => {
     setBalance(parseFloat((Math.round(total * 1 * 100) / 100).toFixed(2)));
   }, [list]);
 
-  console.log('jobs: ', labels);
-
   return (
     <div className={styles.container}>
       <Tabs

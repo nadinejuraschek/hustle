@@ -11,8 +11,6 @@ export const AppReducer = (
         transactions: [...state.transactions, action.payload as Transaction],
       };
     case 'ADD_JOB':
-      console.log('ADD_JOB payload: ', action.payload);
-      console.log('ADD_JOB state: ', state);
       return {
         ...state,
         jobs: [...state.jobs, action.payload as Job],
