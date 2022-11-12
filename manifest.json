@@ -1,0 +1,9 @@
+{
+  "short_name": "hustle",
+  "name": "hustle - A Side Income Tracker",
+  "icons": [],
+  "start_url": ".",
+  "display": "standalone",
+  "theme_color": "#3546AB",
+  "background_color": "#ffffff"
+}

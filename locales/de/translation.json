@@ -1,0 +1,38 @@
+{
+  "NAV": {
+    "DASHBOARD": "Dashboard"
+  },
+  "FORM": {
+    "JOB": {
+      "LABEL": "Nebentätigkeit",
+      "ERROR": "Bitte wähle eine Tätigkeit.",
+      "ALL": "Alle Jobs",
+      "NEW": "Neue Tätigkeit",
+      "ADD": "Neue Tätigkeit"
+    },
+    "SOURCE": {
+      "LABEL": "Einnahmequelle",
+      "ERROR": "Bitte füge eine Einnahmequelle hinzu.",
+      "NEW": "Neue Einnahmequelle",
+      "ADD": "Neue Einnahmequelle"
+    },
+    "AMOUNT": {
+      "LABEL": "Betrag",
+      "ERROR": "Bitte gib einen Betrag ein."
+    },
+    "LIMIT": {
+      "LABEL": "---",
+      "ERROR": "---"
+    },
+    "COLOR": {
+      "LABEL": "Farbe"
+    },
+    "CANCEL": "Schließen",
+    "SUBMIT": "Hinzufügen"
+  },
+  "BOARD": {
+    "TOTAL": "Gesamt",
+    "LIMIT": "Maximal",
+    "REMAINDER": "Rest"
+  }
+}

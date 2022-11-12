@@ -1,0 +1,21 @@
+{
+  "files": {
+    "main.css": "/hustle/static/css/main.0afa0ec1.css",
+    "main.js": "/hustle/static/js/main.0213ff9a.js",
+    "static/media/en.svg": "/hustle/static/media/en.35e6c47cb1764cea3bba34b229665f11.svg",
+    "index.html": "/hustle/index.html",
+    "static/media/getFetch.cjs": "/hustle/static/media/getFetch.40f37ddea2378391108f.cjs",
+    "static/media/save.svg": "/hustle/static/media/save.ed2fc76edd02023c8e448cd2d13f5d5a.svg",
+    "static/media/plus-circle.svg": "/hustle/static/media/plus-circle.6523a8173efdfba1aa91efe0f9e34784.svg",
+    "static/media/chart.svg": "/hustle/static/media/chart.8359ca2bd0c76759b6d82c1065740642.svg",
+    "static/media/filter.svg": "/hustle/static/media/filter.f342dd7b00319746f418bb18b1da51c3.svg",
+    "static/media/close.svg": "/hustle/static/media/close.df559c542a5e6579e0761ba74e9fd1b6.svg",
+    "static/media/de.svg": "/hustle/static/media/de.28476fb818fa19fda952e98d280c0e62.svg",
+    "main.0afa0ec1.css.map": "/hustle/static/css/main.0afa0ec1.css.map",
+    "main.0213ff9a.js.map": "/hustle/static/js/main.0213ff9a.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.0afa0ec1.css",
+    "static/js/main.0213ff9a.js"
+  ]
+}
