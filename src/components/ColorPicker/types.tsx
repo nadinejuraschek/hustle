@@ -1,13 +1,10 @@
-import { FieldError, Path, RegisterOptions, UseFormRegister, UseFormSetValue } from "react-hook-form";
+import { Control, FieldError, Path } from "react-hook-form";
 
 export interface ColorProps<TFormValues> {
-  defaultValue: string;
+  control: Control<TFormValues>;
   error?: FieldError;
   label?: string;
   name: Path<TFormValues>;
-  register?: UseFormRegister<TFormValues>;
-  rules?: RegisterOptions;
-  setValue: UseFormSetValue<TFormValues>;
 }
 
 export type Color = {

@@ -18,7 +18,7 @@ const AddJobForm = (): JSX.Element => {
 
   const defaultValues = { job: '', color: '#FFF678' };
 
-  const { register, handleSubmit, formState, reset, setValue } = useForm({
+  const { control, register, handleSubmit, formState, reset } = useForm({
     defaultValues,
     resolver: yupResolver(jobFormSchema),
     mode: 'onChange',
@@ -60,13 +60,13 @@ const AddJobForm = (): JSX.Element => {
           type='text'
         />
         <ColorPicker
-          defaultValue={defaultValues.color}
+          control={control}
           error={errors.job}
           label={t('FORM.COLOR.LABEL')}
           name="color"
-          setValue={setValue}
         />
         <Button
+          className={styles.submitBtn}
           label={t('FORM.SUBMIT')}
           disabled={!isValid}
           type='submit'

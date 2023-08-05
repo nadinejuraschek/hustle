@@ -2,6 +2,7 @@ import { ButtonProps } from './types';
 import styles from './button.module.css';
 
 const Button = ({
+  className = '',
   disabled = false,
   label,
   onClick,
@@ -11,7 +12,7 @@ const Button = ({
   <button
     className={`${styles.btn} ${outline ? styles.outline : ''} ${
       disabled ? styles.disabled : ''
-    }`}
+    } ${className}`}
     onClick={onClick}
     type={type}
   >

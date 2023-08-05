@@ -6,14 +6,20 @@
 
   position: relative;
 
-  background-color: var(--white);
-  border: 1px solid var(--blue_light);
-  border-radius: 4px;
+  height: 5rem;
+  width: 100%;
+}
+
+.colorInput {
+  height: 100%;
+  width: 100%;
+}
+
+.colorInput > div:first-child {
+  border-color: var(--blue_light);
   color: var(--blue_dark);
   font-size: 1.6rem;
   padding: 0 1rem;
-
-  height: 5rem;
 }
 
 .label {
@@ -30,31 +36,4 @@
   left: 1rem;
 
   z-index: 10;
-}
-
-.pickerWrapper button {
-  height: 5rem;
-  width: 100%;
-
-  border-radius: 4px;
-  box-shadow: none;
-  margin: 0;
-
-  position: absolute;
-  top: 0;
-  left: 0;
-}
-
-.pickerWrapper button span:first-child {
-  height: 100%;
-  width: 100%;
-}
-
-.pickerWrapper button span:first-child div {
-  height: 100%;
-  width: 100%;
-}
-
-.pickerWrapper input {
-  display: none;
 }

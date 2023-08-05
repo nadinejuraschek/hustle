@@ -1,36 +1,35 @@
-import { Color, ColorProps } from './types';
-import { ColorPicker as MUIPicker } from 'material-ui-color';
+import { ColorProps } from './types';
+import { MuiColorInput as MUIColorInput } from 'mui-color-input';
 import styles from './color.module.css';
 import { useTranslation } from 'react-i18next';
-import { Path, PathValue } from 'react-hook-form';
-import { useCallback, useState } from 'react';
+import { Controller } from 'react-hook-form';
 
 const ColorPicker = <TFormValues extends Record<string, unknown>>({
-  defaultValue,
+  control,
   error,
   label = 'Color',
   name,
-  setValue,
 }: ColorProps<TFormValues>): JSX.Element => {
   const { t } = useTranslation();
 
-  const [selectedColor, setSelectedColor] = useState(defaultValue);
-
-  const handleChangeComplete = useCallback((color: Color) => {
-    setSelectedColor(`#${color.hex}`);
-    setValue(name, `#${color.hex}` as PathValue<TFormValues, Path<TFormValues>>);
-  }, [name, setValue]);
-
   return (
-    <div className={styles.colorInputField}>
-      <div className={styles.pickerWrapper}>
-        <label className={styles.label}>{label}</label>
-        <MUIPicker
-          onChange={handleChangeComplete}
-          value={selectedColor}
-        />
-        {error && <div className={styles.error}>{t(error.message)}</div>}
-      </div>
+    <div className={styles.pickerWrapper}>
+      <label className={styles.label}>{label}</label>
+      <Controller
+        name={name}
+        control={control}
+        render={({ field, fieldState }) => (
+          /* @ts-ignore-next-line */
+          <MUIColorInput
+            {...field}
+            className={styles.colorInput}
+            format="hex"
+            helperText={fieldState.invalid ? "Color is invalid" : ""}
+            error={fieldState.invalid}
+          />
+        )}
+      />
+      {error && <div className={styles.error}>{t(error.message)}</div>}
     </div>
   );
 };

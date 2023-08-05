@@ -1,5 +1,5 @@
 import { Chart } from 'components/Icon';
-import Drawer from '@material-ui/core/Drawer';
+import Drawer from '@mui/material/Drawer';
 import LanguageButtons from 'components/LanguageButtons';
 import { NavLink } from 'react-router-dom';
 import styles from './nav.module.css';

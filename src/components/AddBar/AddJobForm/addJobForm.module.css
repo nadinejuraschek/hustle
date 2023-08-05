@@ -13,10 +13,6 @@
   width: 100%;
 }
 
-.addJob button {
-  align-self: flex-end;
-}
-
 .form {
   display: flex;
   flex-direction: column;
@@ -29,8 +25,10 @@
   justify-content: space-between;
 }
 
-.twoFields input {}
-
 .color > div {
   display: none;
+}
+
+.submitBtn {
+  align-self: flex-end;
 }
