@@ -55,7 +55,7 @@ const Filter = ({ handleList }: FilterProps): JSX.Element => {
           className={`${styles.filterBtn} ${
             selectedJob.value !== '' && styles.active
           }`}
-          onClick={() => handleDropdown()}
+          onClick={handleDropdown}
         >
           <FilterIcon className={styles.filterIcon} />
         </div>
@@ -70,12 +70,13 @@ const Filter = ({ handleList }: FilterProps): JSX.Element => {
 
     return (
       <Dropdown
+        closeDropdown={() => setDropdown(false)}
         handleSelectedJob={handleSelectedJob}
         jobForm={jobForm}
         setJobForm={setJobForm}
       />
     );
-  }, [dropdown, handleSelectedJob, jobForm]);
+  }, [dropdown, handleSelectedJob, jobForm, setDropdown]);
 
   return (
     <div className={styles.filter}>

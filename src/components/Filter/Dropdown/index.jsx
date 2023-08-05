@@ -4,7 +4,7 @@ import styles from './dropdown.module.css';
 import { useContext, useMemo } from 'react';
 import { useTranslation } from 'react-i18next';
 
-const Dropdown = ({ handleSelectedJob, jobForm, setJobForm }) => {
+const Dropdown = ({ closeDropdown, handleSelectedJob, jobForm, setJobForm }) => {
   const { t } = useTranslation();
   const { jobs } = useContext(GlobalContext);
 
@@ -31,7 +31,7 @@ const Dropdown = ({ handleSelectedJob, jobForm, setJobForm }) => {
         {t('FORM.JOB.ALL')}
       </div>
       {renderItems}
-      <AddJobForm jobForm={jobForm} setJobForm={setJobForm} />
+      <AddJobForm closeDropdown={closeDropdown} jobForm={jobForm} setJobForm={setJobForm} />
     </div>
   );
 };
