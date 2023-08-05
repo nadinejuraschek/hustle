@@ -2,13 +2,14 @@ import { ReactComponent as DE } from 'assets/icons/de.svg';
 import { ReactComponent as EN } from 'assets/icons/en.svg';
 import styles from './lang.module.css';
 import { useTranslation } from 'react-i18next';
+import { useCallback } from 'react';
 
 const LangBtn = (): JSX.Element => {
   const { i18n } = useTranslation();
 
-  const changeLanguage = (lng: string): void => {
+  const changeLanguage = useCallback((lng: string): void => {
     i18n.changeLanguage(lng);
-  };
+  }, [i18n]);
 
   return (
     <div className={styles.languages}>

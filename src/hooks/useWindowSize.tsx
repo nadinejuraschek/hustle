@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useCallback, useEffect, useState } from 'react';
 
 export type Size = {
   height: number | undefined;
@@ -14,13 +14,13 @@ export const useWindowSize = (): Size => {
   });
 
   // Handler to call on window resize
-  const handleResize = (): void => {
+  const handleResize = useCallback((): void => {
     // Set window width/height to state
     setWindowSize({
       width: window.innerWidth,
       height: window.innerHeight,
     });
-  };
+  }, []);
 
   useEffect(() => {
     // Add event listener
@@ -31,7 +31,7 @@ export const useWindowSize = (): Size => {
 
     // Remove event listener on cleanup
     return () => window.removeEventListener('resize', handleResize);
-  }, []);
+  }, [handleResize]);
 
   return windowSize;
 };

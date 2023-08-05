@@ -12,10 +12,8 @@ const Sidebar = (): JSX.Element => {
       <div className={styles.links}>
         {/* @ts-ignore */}
         <NavLink activeclassname={styles.active} to='/'>
-          <>
-            <Chart className={styles.icon} />
-            {t('NAV.DASHBOARD')}
-          </>
+          <Chart className={styles.icon} />
+          {t('NAV.DASHBOARD')}
         </NavLink>
       </div>
       <LanguageButtons />

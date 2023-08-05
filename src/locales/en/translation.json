@@ -14,7 +14,7 @@
       "LABEL": "Source",
       "ERROR": "Please choose a source.",
       "NEW": "New Income Source",
-      "ADD": "Add Income"
+      "ADD": "Add Income Source"
     },
     "AMOUNT": {
       "LABEL": "Amount",
@@ -25,7 +25,8 @@
       "ERROR": "---"
     },
     "COLOR": {
-      "LABEL": "Color"
+      "LABEL": "Color",
+      "ERROR": "Please select a color."
     },
     "CANCEL": "Cancel",
     "SUBMIT": "Submit"

@@ -7,7 +7,7 @@
 }
 
 .tab {
-  border-bottom: 1px solid var(--grey_medium);
+  border-bottom: 3px solid var(--grey_medium);
   font-size: 1.6rem;
   height: 5rem;
 
@@ -21,7 +21,7 @@
 }
 
 .active {
-  border-bottom: 2px solid var(--blue_medium);
+  border-bottom: 3px solid var(--blue_medium);
   color: var(--blue_medium);
   font-weight: bold;
 }

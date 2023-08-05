@@ -1,40 +1,49 @@
 import { Plus, Save } from 'components/Icon';
-import { useContext, useState } from 'react';
-
+import { useCallback, useContext, useState } from 'react';
 import { GlobalContext } from 'context/GlobalContext';
 import styles from './addJobForm.module.css';
 import { useTranslation } from 'react-i18next';
 
-const AddJobForm = ({ jobForm, setJobForm }) => {
+const AddJobForm = ({ closeDropdown, jobForm, setJobForm }) => {
   const { t } = useTranslation();
 
   const [inputValue, setInputValue] = useState('');
   const { addJob } = useContext(GlobalContext);
 
-  const handleInputChange = event => {
+  const handleInputChange = useCallback(event => {
     const value = event.target.value;
     setInputValue(value);
-  };
+  }, []);
 
-  const handleJobSave = event => {
+  const handleJobSave = useCallback(event => {
     event.preventDefault();
+
+    if (!inputValue) {
+      setJobForm(false);
+      return;
+    }
+
     const data = {
+      color: '#FFF678',
       label: inputValue,
       value: inputValue.toLowerCase(),
       income: 0,
     };
     addJob(data);
     setJobForm(false);
-  };
+    closeDropdown();
+  }, [addJob, closeDropdown, inputValue, setJobForm]);
 
-  const addItem = (
-    <div className={styles.addItem} onClick={() => setJobForm(true)}>
-      <Plus className={styles.icon} />
-      <span>{t('FORM.JOB.ADD')}</span>
-    </div>
-  );
+  if (!jobForm) {
+    return (
+      <div className={styles.addItem} onClick={() => setJobForm(true)}>
+        <Plus className={styles.icon} />
+        <span>{t('FORM.JOB.ADD')}</span>
+      </div>
+    );
+  }
 
-  const form = (
+  return (
     <div className={styles.formItem}>
       <input
         className={styles.input}
@@ -47,8 +56,6 @@ const AddJobForm = ({ jobForm, setJobForm }) => {
       </div>
     </div>
   );
-
-  return jobForm ? form : addItem;
 };
 
 export default AddJobForm;

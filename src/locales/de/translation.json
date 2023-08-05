@@ -25,7 +25,8 @@
       "ERROR": "---"
     },
     "COLOR": {
-      "LABEL": "Farbe"
+      "LABEL": "Farbe",
+      "ERROR": "Bitte wähle eine Farbe."
     },
     "CANCEL": "Schließen",
     "SUBMIT": "Hinzufügen"

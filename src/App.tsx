@@ -1,5 +1,4 @@
 import { Route, BrowserRouter as Router, Routes } from 'react-router-dom';
-
 import Dashboard from 'pages/Dashboard';
 import Layout from 'components/Layout';
 import Spinner from 'components/Spinner';
