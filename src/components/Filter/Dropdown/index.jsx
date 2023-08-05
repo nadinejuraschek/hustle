@@ -1,14 +1,14 @@
 import AddJobForm from './AddJobForm';
 import { GlobalContext } from 'context/GlobalContext';
 import styles from './dropdown.module.css';
-import { useContext } from 'react';
+import { useContext, useMemo } from 'react';
 import { useTranslation } from 'react-i18next';
 
 const Dropdown = ({ handleSelectedJob, jobForm, setJobForm }) => {
   const { t } = useTranslation();
   const { jobs } = useContext(GlobalContext);
 
-  const renderItems = () => {
+  const renderItems = useMemo(() => {
     return jobs.map((job, index) => (
       <div
         className={styles.item}
@@ -18,7 +18,7 @@ const Dropdown = ({ handleSelectedJob, jobForm, setJobForm }) => {
         {job.label}
       </div>
     ));
-  };
+  }, [handleSelectedJob, jobs]);
 
   return (
     <div className={styles.dropdown}>
@@ -30,8 +30,8 @@ const Dropdown = ({ handleSelectedJob, jobForm, setJobForm }) => {
       >
         {t('FORM.JOB.ALL')}
       </div>
-      {renderItems()}
-      {<AddJobForm jobForm={jobForm} setJobForm={setJobForm} />}
+      {renderItems}
+      <AddJobForm jobForm={jobForm} setJobForm={setJobForm} />
     </div>
   );
 };

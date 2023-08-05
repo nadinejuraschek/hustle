@@ -1,11 +1,13 @@
-export const jobs = [
+import { Job, Transaction } from "context/types";
+
+export const jobs: Job[] = [
   { color: '#FD9579', label: 'Babysit', value: 'babysit', income: 0 },
   { color: '#219ad3', label: 'Tutoring', value: 'tutoring', income: 0 },
   { color: '#86cc6a', label: 'Clothing Sales', value: 'clothingsales', income: 0 },
   { color: '#59286e', label: 'Dance Classes', value: 'danceclasses', income: 0 },
 ];
 
-export const transactions = [
+export const transactions: Transaction[] = [
   {
     job: 'babysit',
     source: 'Mueller Family',

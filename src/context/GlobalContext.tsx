@@ -5,7 +5,7 @@ import {
   ReducerActions,
   Transaction,
 } from './types';
-import { createContext, useEffect, useReducer, useState } from 'react';
+import { createContext, useCallback, useEffect, useMemo, useReducer, useState } from 'react';
 import { jobs, transactions } from 'data';
 
 import { AppReducer } from 'reducers/AppReducer';
@@ -28,12 +28,12 @@ export const GlobalContextProvider = ({
   >(AppReducer, initialState);
   const [incomeList, setIncomeList] = useState<number[]>([]);
 
-  const addJob = (job: Job): void => {
+  const addJob = useCallback((job: Job): void => {
     dispatch({
       type: 'ADD_JOB',
       payload: job,
     });
-  };
+  }, []);
 
   const addTransaction = (transaction: Transaction): void => {
     dispatch({
@@ -71,7 +71,7 @@ export const GlobalContextProvider = ({
     setIncomeList(graphIncomes);
   }, [state]);
 
-  const value = {
+  const value = useMemo(() => ({
     jobs: (state as GlobalState).jobs,
     transactions: (state as GlobalState).transactions.sort((x, y): number => {
       return x.timestamp - y.timestamp;
@@ -79,7 +79,7 @@ export const GlobalContextProvider = ({
     incomeList,
     addTransaction,
     addJob,
-  };
+  }), [addJob, incomeList, state]);
 
   return (
     <GlobalContext.Provider value={value}>{children}</GlobalContext.Provider>

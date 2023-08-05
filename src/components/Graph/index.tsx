@@ -6,8 +6,7 @@ import {
   LinearScale,
 } from 'chart.js';
 import { GraphData, GraphProps } from './types';
-import { useContext, useEffect, useState } from 'react';
-
+import { useContext, useEffect, useMemo, useState } from 'react';
 import BarGraph from './BarGraph';
 import DonutGraph from './DonutGraph';
 import { GlobalContext } from 'context/GlobalContext';
@@ -27,11 +26,11 @@ const Graph = ({ list }: GraphProps): JSX.Element => {
   });
   const { jobs, incomeList } = useContext(GlobalContext);
 
-  const labels = jobs.map((job: Job): string => job.label);
-  const colors = jobs.map((job: Job): string => job.color);
-  const transparentColors = jobs.map((job: Job): string => `${job.color}80`);
+  const labels = useMemo(() => jobs.map((job: Job): string => job.label), [jobs]);
+  const colors = useMemo(() => jobs.map((job: Job): string => job.color), [jobs]);
+  const transparentColors = useMemo(() => jobs.map((job: Job): string => `${job.color}80`), [jobs]);
 
-  const data: GraphData = {
+  const data: GraphData = useMemo(() => ({
     labels: labels,
     datasets: [
       {
@@ -42,7 +41,7 @@ const Graph = ({ list }: GraphProps): JSX.Element => {
         hoverBackgroundColor: colors,
       },
     ],
-  };
+  }), [colors, incomeList, labels, transparentColors]);
 
   // SET BALANCE
   const [balance, setBalance] = useState<number>(0);
@@ -55,6 +54,14 @@ const Graph = ({ list }: GraphProps): JSX.Element => {
     setBalance(parseFloat((Math.round(total * 1 * 100) / 100).toFixed(2)));
   }, [list]);
 
+  const renderGraph = useMemo(() => {
+    if (chartType.value === 'bar') {
+      return <BarGraph data={data} />;
+    }
+
+    return <DonutGraph data={data} />;
+  }, [chartType, data]);
+
   return (
     <div className={styles.container}>
       <Tabs
@@ -65,11 +72,7 @@ const Graph = ({ list }: GraphProps): JSX.Element => {
         handleClick={setChartType}
       />
       <div className={styles.graph}>
-        {chartType.value === 'bar' ? (
-          <BarGraph data={data} />
-        ) : (
-          <DonutGraph data={data} />
-        )}
+        {renderGraph}
       </div>
       <div className={styles.total}>
         <span className={styles.label}>{t('BOARD.TOTAL') as string}:</span>

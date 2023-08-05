@@ -9,10 +9,26 @@
   display: flex;
   flex-direction: column;
   gap: 2rem;
-
-  border-bottom: 1px solid var(--grey_medium);
 }
 
 .addIncome button {
   align-self: flex-end;
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: 3rem;
+}
+
+.twoFields {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.twoFields input {}
+
+.color > div {
+  display: none;
 }

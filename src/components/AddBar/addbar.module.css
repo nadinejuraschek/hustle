@@ -5,11 +5,17 @@
     0px 2px 2px 0px rgba(0, 0, 0, 0.14), 0px 1px 5px 0px rgba(0, 0, 0, 0.12);
   padding: 2.5rem;
 
-  display: grid;
-  grid-template-columns: 1fr;
-  grid-template-rows: repeat(2, 1fr);
-  grid-gap: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 4rem;
 
   grid-column: 8 / 11;
   grid-row: 1 / -1;
+}
+
+.divider {
+  background-color: var(--grey_medium);
+  border: none;
+  height: 1px;
+  width: 100%;
 }

@@ -1,5 +1,4 @@
-import { useContext, useEffect, useState } from 'react';
-
+import { useCallback, useContext, useEffect, useMemo, useState } from 'react';
 import Dropdown from './Dropdown';
 import { Filter as FilterIcon } from '../Icon';
 import { FilterProps } from './types';
@@ -23,19 +22,19 @@ const Filter = ({ handleList }: FilterProps): JSX.Element => {
     income: 0,
   });
 
-  const handleDropdown = (): void => {
+  const handleDropdown = useCallback((): void => {
     if (!dropdown) {
       setDropdown(true);
     } else {
       setJobForm(false);
       setDropdown(false);
     }
-  };
+  }, [dropdown]);
 
-  const handleSelectedJob = (job: Job): void => {
+  const handleSelectedJob = useCallback((job: Job): void => {
     setSelectedJob(job);
     setDropdown(false);
-  };
+  }, []);
 
   // FILTER TRANSACTIONS logic
   useEffect(() => {
@@ -49,9 +48,9 @@ const Filter = ({ handleList }: FilterProps): JSX.Element => {
     }
   }, [handleList, transactions, selectedJob]);
 
-  return (
-    <div className={styles.filter}>
-      {!noJobsAvailable && (
+  const renderEmptyView = useMemo(() => {
+    if (!noJobsAvailable) {
+      return (
         <div
           className={`${styles.filterBtn} ${
             selectedJob.value !== '' && styles.active
@@ -60,14 +59,28 @@ const Filter = ({ handleList }: FilterProps): JSX.Element => {
         >
           <FilterIcon className={styles.filterIcon} />
         </div>
-      )}
-      {dropdown && (
-        <Dropdown
-          handleSelectedJob={handleSelectedJob}
-          jobForm={jobForm}
-          setJobForm={setJobForm}
-        />
-      )}
+      );
+    }
+
+    return null;
+  }, [handleDropdown, noJobsAvailable, selectedJob]);
+
+  const renderDropdown = useMemo(() => {
+    if (!dropdown) return null;
+
+    return (
+      <Dropdown
+        handleSelectedJob={handleSelectedJob}
+        jobForm={jobForm}
+        setJobForm={setJobForm}
+      />
+    );
+  }, [dropdown, handleSelectedJob, jobForm]);
+
+  return (
+    <div className={styles.filter}>
+      {renderEmptyView}
+      {renderDropdown}
     </div>
   );
 };
